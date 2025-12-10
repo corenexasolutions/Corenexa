@@ -420,6 +420,8 @@ footer {
         transform: translateY(-10px);
     }
 	
+	
+	
 	/* =========================================
    MENU MOBILE (HAMBÚRGUER)
    ========================================= */
@@ -498,6 +500,23 @@ footer {
 
     .nav-links li {
         margin: 15px 0;
+    }
+	
+	/* Reduz o título principal (Hero) para caber na tela */
+    h1 {
+        font-size: 32px; /* Era 48px. 32px é um tamanho seguro para mobile */
+        word-wrap: break-word; /* Garante que palavras gigantes quebrem se necessário */
+    }
+
+    /* Reduz os subtítulos das seções */
+    h2 {
+        font-size: 26px; /* Era 36px */
+    }
+
+    /* Reduz um pouco o padding (espaço interno) lateral para ganhar área útil */
+    .hero, .services, .pricing-section {
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }
 
