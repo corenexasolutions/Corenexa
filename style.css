@@ -518,11 +518,344 @@ footer {
         padding-left: 5%;
         padding-right: 5%;
     }
+	
 }
+
+
 
 /* Animação suave de descida */
 @keyframes descerMenu {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+}
+
+/* =========================================
+   PÁGINA DE CONTATO
+   ========================================= */
+
+.contact-section {
+    padding: 60px 5%;
+    background-color: var(--cinza-claro); /* Usa o mesmo fundo dos planos */
+    min-height: 80vh;
+}
+
+.contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.contact-header h1 span {
+    color: var(--azul);
+}
+
+/* Grid que divide a tela em 2 */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Esquerda menor, Direita maior */
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Cartão da Esquerda (Info) */
+.contact-info-card {
+    background: var(--escuro);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.contact-info-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-info-card p {
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.info-item .icon {
+    font-size: 24px;
+    background: rgba(255,255,255,0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.info-item .details span {
+    display: block;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.info-item .details strong {
+    font-size: 16px;
+}
+
+.btn-whatsapp {
+    display: block;
+    background-color: #25D366; /* Verde WhatsApp */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebc57;
+    transform: scale(1.05);
+}
+
+/* Cartão da Direita (Formulário) */
+.contact-form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--escuro);
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+    background-color: #fcfcfc;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--azul);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(77, 161, 206, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, var(--azul) 0%, var(--laranja) 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Responsividade da Página de Contato */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr; /* Vira uma coluna só no celular */
+        gap: 30px;
+    }
+
+    .contact-info-card, .contact-form-card {
+        padding: 30px 20px;
+    }
+}
+
+/* =========================================
+   PÁGINA SOBRE NÓS
+   ========================================= */
+
+/* Área do Título */
+.about-hero {
+    padding: 60px 5% 20px 5%;
+    background-color: white;
+    text-align: center;
+}
+
+/* Área de Conteúdo (Texto + Imagem) */
+.about-content {
+    padding: 40px 5% 80px 5%;
+    background-color: white;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text {
+    flex: 1; /* Ocupa metade */
+}
+
+.about-text h3 {
+    font-size: 28px;
+    color: var(--azul);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe laranja abaixo do título */
+.about-text h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: var(--laranja);
+    margin-top: 5px;
+    border-radius: 2px;
+}
+
+.about-text p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 16px;
+    text-align: justify;
+}
+
+/* Imagem lateral */
+.about-image {
+    flex: 1; /* Ocupa a outra metade */
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0 rgba(77, 161, 206, 0.1); /* Sombra azulada */
+    object-fit: cover;
+}
+
+/* Barra de Estatísticas */
+.stats-bar {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--borda);
+}
+
+.stat-item strong {
+    display: block;
+    font-size: 32px;
+    color: var(--laranja);
+    line-height: 1;
+}
+
+.stat-item span {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Seção de Valores (Missão/Visão/Valores) */
+.values-section {
+    padding: 80px 5%;
+    background-color: var(--cinza-claro);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border-top: 4px solid transparent;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    border-top: 4px solid var(--azul);
+}
+
+/* Destaque para o card do meio (Visão) */
+.value-card.highlight {
+    border-top: 4px solid var(--laranja);
+}
+
+.value-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    margin-bottom: 15px;
+    color: var(--escuro);
+}
+
+.value-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsividade da Página Sobre */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Empilha texto e imagem */
+    }
+
+    .about-image {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .about-image img {
+        box-shadow: 10px 10px 0 rgba(77, 161, 206, 0.1);
+    }
+
+    .stats-bar {
+        justify-content: space-between;
+    }
+
+    .stat-item strong {
+        font-size: 24px;
+    }
 }
