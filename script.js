@@ -73,3 +73,25 @@ if (form) {
 
     form.addEventListener("submit", handleSubmit);
 }
+
+/* --- PREENCHIMENTO AUTOMÁTICO DO PLANO (Página de Contato) --- */
+
+// 1. Verifica se estamos na página que tem o campo de mensagem
+const mensagemField = document.getElementById('mensagem');
+
+if (mensagemField) {
+    // 2. Lê a URL do navegador para achar o "?plano=..."
+    const urlParams = new URLSearchParams(window.location.search);
+    const planoSelecionado = urlParams.get('plano');
+
+    // 3. Se tiver um plano na URL, preenche o texto
+    if (planoSelecionado) {
+        // Formata o texto (ex: Transforma "Intermediario" em "Intermediário")
+        let nomePlano = planoSelecionado;
+        if(planoSelecionado === 'Basico') nomePlano = 'Básico';
+        if(planoSelecionado === 'Intermediario') nomePlano = 'Intermediário';
+        
+        // Escreve no campo de texto
+        mensagemField.value = `Olá! Gostaria de solicitar um orçamento para o Plano ${nomePlano}.\n\nAguardo contato.`;
+    }
+}
