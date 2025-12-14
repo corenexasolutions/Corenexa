@@ -3,93 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="../img/ico.png" />
-    <title>Planos e Serviços - CoreNexa</title>
+    <link rel="icon" type="image/x-icon" href="../img/ico.png" />
+    <title>Nossas Soluções - CoreNexa</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-	
-	<header>
-    <div class="logo">
-        <a href="../index.html">
-            <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
-        </a>
-    </div>
 
-    <div class="mobile-menu-icon">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-
-    <nav>
-        <ul class="nav-links">
-            <li><a href="../index.html">Início</a></li>
-            <li><a href="pageServicos.html" style="color:var(--azul); font-weight:700;">Serviços</a></li>
-            <li><a href="pageSobre.html">Sobre</a></li>
-            <li><a href="pageContato.html">Contato</a></li>
-        </ul>
-    </nav>
-
-    <a href="https://wa.me/5531984782011?text=Ol%C3%A1!%0AGostaria%20de%20fazer%20um%20or%C3%A7amento%20sobre%20os%20servi%C3%A7os%20de%20suporte%20de%20TI." target="_blank" class="btn-cta">Solicitar Orçamento</a>
-</header>
-	
-    <section class="pricing-section">
-        <div class="section-header">
-            <h2>Planos sob medida para sua <span>Empresa</span></h2>
-            <p>Escolha o nível de gerenciamento ideal para o seu negócio crescer com segurança.</p>
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
+            </a>
         </div>
 
-        <div class="pricing-grid">
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+                
+                <li class="dropdown-item">
+                    <a href="pageServicos.html" class="dropdown-link" style="color:var(--azul); font-weight:700;">Serviços ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dataProtection.html">Data Protection (Backup)</a></li>
+                        <li><a href="suporteAgil.html">Suporte Ágil (Helpdesk)</a></li>
+                        <li><a href="gestao360.html">Gestão 360º (Infra)</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="pageSobre.html">Sobre</a></li>
+                <li><a href="pageContato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <a href="pageContato.html" class="btn-cta">Solicitar Orçamento</a>
+    </header>
+
+    <section class="services-hero">
+        <div class="container-text">
+            <h1>Soluções que crescem <br><span>com sua empresa</span></h1>
+            <p>Da proteção de dados ao suporte técnico diário. Entenda como cada uma de nossas frentes atua para blindar e acelerar o seu negócio.</p>
+        </div>
+    </section>
+
+    <section class="services-hub">
+        <div class="hub-grid">
             
-            <div class="plan-card">
-                <h3 class="plan-name">Básico</h3>
-                <p class="plan-price">Ideal para pequenos escritórios</p>
-                
-                <ul class="features-list">
-                    <li>Antivírus Gerenciado</li>
-                    <li>Backup Automático</li>
-                    <li>Pacote Office</li>
-                    <li>Suporte de TI (Remoto)</li>
+            <div class="hub-card">
+                <div class="hub-icon-bg">🛡️</div>
+                <h3>Data Protection</h3>
+                <p class="hub-desc">Backup em nuvem criptografado e proteção contra Ransomware. Garanta que seus dados sobrevivam a qualquer desastre.</p>
+                <ul class="hub-list">
+                    <li>Backup Imutável</li>
+                    <li>Criptografia Militar</li>
+                    <li>Recuperação Rápida</li>
                 </ul>
-
-                <a href="pageContato.html?plano=Basico" class="btn-plan btn-outline">Escolher Básico</a>
+                <a href="pageDataProtection.html" class="btn-hub">Conhecer Data Protection ➜</a>
             </div>
 
-            <div class="plan-card popular">
-                <div class="popular-tag">Mais Escolhido</div>
-                <h3 class="plan-name">Intermediário</h3>
-                <p class="plan-price">Segurança e presença digital</p>
-                
-                <ul class="features-list">
-                    <li class="included">Tudo do plano Básico</li>
+            <div class="hub-card">
+                <div class="hub-icon-bg">⚡</div>
+                <h3>Suporte Ágil</h3>
+                <p class="hub-desc">Helpdesk humanizado para resolver problemas do dia a dia. Computadores lentos, impressoras e wi-fi não são mais problema.</p>
+                <ul class="hub-list">
+                    <li>Atendimento Remoto</li>
+                    <li>SLA Definido</li>
+                    <li>Sem Robôs</li>
+                </ul>
+                <a href="pageSuporteAgil.html" class="btn-hub">Conhecer Suporte Ágil ➜</a>
+            </div>
+
+            <div class="hub-card destaque">
+                <div class="tag-hub">Completo</div>
+                <div class="hub-icon-bg">🌐</div>
+                <h3>Gestão 360º</h3>
+                <p class="hub-desc">A união de tudo: Suporte + Segurança + Estratégia. É como ter um departamento de TI inteiro dentro da sua empresa.</p>
+                <ul class="hub-list">
                     <li>Monitoramento 24/7</li>
-                    <li>VPN Corporativa</li>
-                    <li>Criação/Gestão de Site</li>
-                    <li>E-mail Profissional</li>
+                    <li>Consultoria vCIO</li>
+                    <li>Gestão de Fornecedores</li>
                 </ul>
-
-                <a href="pageContato.html?plano=Intermediario" class="btn-plan btn-outline">Escolher Intermediário</a>
-            </div>
-
-            <div class="plan-card">
-                <h3 class="plan-name">Profissional</h3>
-                <p class="plan-price">Gestão completa de infraestrutura</p>
-                
-                <ul class="features-list">
-                    <li class="included">Tudo do plano Intermediário</li>
-                    <li>Disaster Recovery (DR)</li>
-                    <li>Adequação à LGPD (TI)</li>
-                    <li>Suporte Presencial (Visitas)</li>
-                    <li>Gestão de Fornecedores de TI</li>
-                </ul>
-
-                <a href="pageContato.html?plano=Profissional" class="btn-plan btn-outline">Escolher Profissional</a>
+                <a href="pageGestao360.html" class="btn-hub btn-hub-filled">Ver Planos de Gestão ➜</a>
             </div>
 
         </div>
     </section>
-<script src="../script.js"></script>
+
+    <section class="cta-banner">
+        <h2>Não sabe qual o ideal para você?</h2>
+        <p>Nossos consultores analisam sua estrutura sem custo.</p>
+        <a href="pageContato.html" class="btn-cta">Falar com Consultor</a>
+    </section>
+
+    <footer>
+        <img src="../img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
+        <p>Conectando o presente ao futuro da tecnologia.</p>
+        <br>
+        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
