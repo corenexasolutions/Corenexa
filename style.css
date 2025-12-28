@@ -2177,3 +2177,76 @@ small {
     color: var(--escuro);
     background-color: #f9f9f9;
 }
+
+/* =========================================
+   PÁGINA DE OBRIGADO (SUCESSO)
+   ========================================= */
+
+.thank-you-section {
+    min-height: 70vh; /* Garante que ocupe a maior parte da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--fundo);
+    padding: 60px 5%;
+}
+
+.success-icon-bg {
+    width: 100px;
+    height: 100px;
+    background-color: #d4edda; /* Verde claro fundo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto; /* Centraliza horizontalmente */
+    box-shadow: 0 10px 20px rgba(39, 174, 96, 0.2);
+}
+
+.checkmark {
+    font-size: 50px;
+    color: #27ae60; /* Verde escuro ícone */
+    font-weight: bold;
+}
+
+.thank-you-section h1 {
+    font-size: 42px;
+    color: var(--escuro);
+    margin-bottom: 20px;
+}
+
+.thank-you-section p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Ajuste nos botões para não ficarem gigantes */
+.thank-you-section .btn-plan {
+    width: auto; /* Remove a largura de 100% padrão dos cards */
+    padding: 15px 40px;
+    min-width: 200px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .thank-you-section h1 {
+        font-size: 32px;
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+    .thank-you-section .btn-plan {
+        width: 100%;
+    }
+}

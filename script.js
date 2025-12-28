@@ -29,13 +29,13 @@ if (mobileMenuIcon && navLinks) {
     });
 }
 
-/* --- Lógica de Envio de Formulário (AJAX) --- */
+/* --- Lógica de Envio de Formulário (AJAX com Redirecionamento) --- */
 const form = document.getElementById("my-form");
 
 if (form) {
     
     async function handleSubmit(event) {
-        event.preventDefault(); // Impede o site de mudar de página
+        event.preventDefault(); // Impede o site de mudar de página imediatamente
         
         const status = document.getElementById("my-form-status");
         const data = new FormData(event.target);
@@ -49,12 +49,19 @@ if (form) {
             }
         }).then(response => {
             if (response.ok) {
-                // Sucesso!
-                status.innerHTML = "Obrigado! Sua mensagem foi enviada com sucesso.";
+                // --- SUCESSO ---
+                status.innerHTML = "Obrigado! Mensagem enviada. Redirecionando...";
                 status.classList.add('success'); // Fica verde
                 form.reset(); // Limpa os campos
+
+                // AGUARDA 2 SEGUNDOS E REDIRECIONA
+                setTimeout(() => {
+                    // Certifique-se que o arquivo pageObrigado.html existe na mesma pasta
+                    window.location.href = "pageObrigado.html"; 
+                }, 2000);
+
             } else {
-                // Erro do servidor
+                // --- ERRO ---
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
                         status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
@@ -65,7 +72,7 @@ if (form) {
                 })
             }
         }).catch(error => {
-            // Erro de conexão
+            // --- ERRO DE CONEXÃO ---
             status.innerHTML = "Oops! Houve um problema na conexão.";
             status.classList.add('error');
         });
@@ -95,6 +102,8 @@ if (mensagemField) {
         mensagemField.value = `Olá! Gostaria de solicitar um orçamento para o Plano ${nomePlano}.\n\nAguardo contato.`;
     }
 }
+
+/* --- LÓGICA PARA ABRIR O MENU NO CELULAR (AO CLICAR NO NOME) --- */
 document.addEventListener("DOMContentLoaded", function() {
     // Seleciona o link "Serviços"
     const menuServicos = document.querySelector('.dropdown-link');
@@ -109,12 +118,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 parentItem.classList.toggle('active'); // 2. Abre ou fecha o menu
             }
         });
+
+        // Opcional: Fechar o menu se clicar fora dele
+        document.addEventListener('click', function(e) {
+            if (!parentItem.contains(e.target)) {
+                parentItem.classList.remove('active');
+            }
+        });
     }
-    
-    // Opcional: Fechar o menu se clicar fora dele
-    document.addEventListener('click', function(e) {
-        if (!parentItem.contains(e.target)) {
-            parentItem.classList.remove('active');
-        }
-    });
 });
