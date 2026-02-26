@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../img/ico.png" />
+    <title>CoreBackup - Personalize seu Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="corebackup.css"> </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="pageRevenda.html">Área do Parceiro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="customizer-section">
+        <div class="container">
+            <div class="customizer-header">
+                <span class="badge-tech">White Label</span>
+                <h2>CoreBackup: <span style="color:var(--laranja);">Sua Marca</span>, Nossa Tecnologia</h2>
+                <p>Veja em tempo real como o software ficará para o seu cliente final. Personalize o nome, logotipo e as cores do aplicativo.</p>
+            </div>
+
+            <div class="customizer-layout">
+                
+                <div class="controls-panel">
+                    <h3>Opções de Personalização</h3>
+                    
+                    <div class="control-group">
+                        <label for="appName">Nome do Software</label>
+                        <input type="text" id="appName" value="CoreBackup" placeholder="Ex: MeuBackup Turbo">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Ou envie o seu Logotipo (Imagem)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="appLogo" accept="image/png, image/jpeg, image/svg+xml">
+                            <small>Formatos recomendados: PNG transparente ou Branco.</small>
+                        </div>
+                        <button id="removeLogoBtn" class="btn-small-outline" style="display:none; margin-top:10px;">Remover Imagem e Voltar Texto</button>
+                    </div>
+
+                    <div class="control-group row-colors">
+                        <div class="color-picker-box">
+                            <label for="bgColor">Cor de Fundo</label>
+                            <input type="color" id="bgColor" value="#1c1c1c">
+                        </div>
+                        <div class="color-picker-box">
+                            <label for="btnColor">Cor do Botão</label>
+                            <input type="color" id="btnColor" value="#228b22">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="window-mockup">
+                        <div class="window-titlebar">
+                            <div class="titlebar-left">
+                                <span class="app-icon">🛡️</span>
+                                <span id="windowTitleText">Login - CoreBackup</span>
+                            </div>
+                            <div class="titlebar-right">
+                                <span class="win-btn minimize">_</span>
+                                <span class="win-btn maximize">□</span>
+                                <span class="win-btn close-btn">✕</span>
+                            </div>
+                        </div>
+
+                        <div class="window-content" id="windowContent">
+                            
+                            <div class="brand-area">
+                                <h1 id="previewName">CoreBackup</h1>
+                                <img id="previewImage" src="" alt="Sua Logo" style="display:none;">
+                            </div>
+
+                            <div class="form-area">
+                                <div class="fake-input-group">
+                                    <label>E-mail:</label>
+                                    <div class="fake-input"></div>
+                                </div>
+                                
+                                <div class="fake-input-group">
+                                    <label>Senha:</label>
+                                    <div class="fake-input"></div>
+                                </div>
+
+                                <div class="fake-checkbox">
+                                    <input type="checkbox" checked disabled>
+                                    <label>Lembrar minhas credenciais</label>
+                                </div>
+
+                                <button id="previewBtn" class="fake-login-btn">ENTRAR</button>
+                            </div>
+
+                            <div class="window-footer">
+                                Ver. 1.0.0.1
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="corebackup.js"></script>
+</body>
+</html>
