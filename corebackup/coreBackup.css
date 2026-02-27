@@ -239,3 +239,42 @@
     color: #888;
     padding-top: 30px;
 }
+
+/* --- ESTILOS DA ESCOLHA DE NUVEM --- */
+
+/* Estilo do campo Select */
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: inherit;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-select:focus {
+    border-color: var(--azul);
+}
+
+/* Ajuste do Rodapé do App para alinhar os itens */
+.window-footer {
+    margin-top: auto;
+    font-size: 11px;
+    color: #888;
+    padding-top: 30px;
+    display: flex; /* Adicionado para separar os itens */
+    justify-content: space-between; /* Um de cada lado */
+    align-items: center;
+}
+
+.cloud-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #ccc;
+}

@@ -61,7 +61,18 @@
                             <label for="btnColor">Cor do Botão</label>
                             <input type="color" id="btnColor" value="#228b22">
                         </div>
+						
                     </div>
+					
+					<div class="control-group" style="margin-top: 20px;">
+                        <label for="cloudProvider">Provedor de Armazenamento</label>
+                        <select id="cloudProvider" class="form-select">
+                            <option value="☁️ CoreBackup Cloud">☁️ CoreBackup Cloud (Recomendado)</option>
+                            <option value="🔥 Wasabi Hot Storage">🔥 Wasabi Hot Storage</option>
+                            <option value="📦 Amazon S3">📦 Amazon S3</option>
+                        </select>
+                        <small style="color:#666; font-size:12px; display:block; margin-top:5px;">Define o ícone de conexão no rodapé do app.</small>
+						</div>
                 </div>
 
                 <div class="preview-panel">
@@ -105,9 +116,9 @@
                             </div>
 
                             <div class="window-footer">
-                                Ver. 1.0.0.1
+                                <span class="version-text">Ver. 1.0.0.1</span>
+                                <span class="cloud-indicator" id="previewCloud">☁️ CoreBackup Cloud</span>
                             </div>
-
                         </div>
                     </div>
                 </div>

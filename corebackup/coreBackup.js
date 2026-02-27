@@ -70,4 +70,23 @@ document.addEventListener("DOMContentLoaded", function() {
         previewBtn.style.backgroundColor = e.target.value;
     });
 
+// --- Referências da Nuvem ---
+    const cloudProviderSelect = document.getElementById('cloudProvider');
+    const previewCloudText = document.getElementById('previewCloud');
+
+    // 6. Alterar o Provedor de Nuvem no Rodapé
+    if (cloudProviderSelect && previewCloudText) {
+        cloudProviderSelect.addEventListener('change', function(e) {
+            // Pega o valor (texto) selecionado e joga no rodapé do mockup
+            previewCloudText.textContent = e.target.value;
+            
+            // Dá um pequeno efeito visual de "piscar" para mostrar que mudou
+            previewCloudText.style.opacity = 0;
+            setTimeout(() => {
+                previewCloudText.style.opacity = 1;
+                previewCloudText.style.transition = "opacity 0.3s ease";
+            }, 100);
+        });
+    }
+
 });
