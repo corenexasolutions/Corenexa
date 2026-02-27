@@ -33,7 +33,6 @@ if (mobileMenuIcon && navLinks) {
 const form = document.getElementById("my-form");
 
 if (form) {
-    
     async function handleSubmit(event) {
         event.preventDefault(); // Impede o site de mudar de página imediatamente
         
@@ -56,8 +55,8 @@ if (form) {
 
                 // AGUARDA 2 SEGUNDOS E REDIRECIONA
                 setTimeout(() => {
-                    // Certifique-se que o arquivo pageObrigado.html existe na mesma pasta
-                    window.location.href = "pageObrigado.html"; 
+                    // Como você está usando URLs limpas, redireciona para /obrigado
+                    window.location.href = "/obrigado"; 
                 }, 2000);
 
             } else {
@@ -87,9 +86,9 @@ if (form) {
 const mensagemField = document.getElementById('mensagem');
 
 if (mensagemField) {
-    // 2. Lê a URL do navegador para achar o "?plano=..."
+    // 2. Lê a URL do navegador para achar o "?plano=..." ou "?assunto=..."
     const urlParams = new URLSearchParams(window.location.search);
-    const planoSelecionado = urlParams.get('plano');
+    const planoSelecionado = urlParams.get('plano') || urlParams.get('assunto');
 
     // 3. Se tiver um plano na URL, preenche o texto
     if (planoSelecionado) {
@@ -128,29 +127,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/* --- LÓGICA DO SLIDER DE BACKUP (Data Protection) --- */
 
-// Esta função é chamada diretamente pelo oninput no HTML
+/* =========================================
+   LÓGICA DO SLIDER DE BACKUP (CoreBackup)
+   ========================================= */
+
 function updateStorage(val) {
     const display = document.getElementById('storageDisplay');
     const btnText = document.getElementById('btnTextStorage');
     const btnLink = document.getElementById('btnCustomStorage');
     
-    // Verifica se os elementos existem antes de tentar alterar (Evita erro em outras páginas)
+    // Verifica se os elementos existem na página atual antes de rodar
     if (display && btnText && btnLink) {
-        
         let formattedVal = "";
         let linkVal = "";
 
         if (val >= 1000) {
-            // Se for maior que 1000, converte para TB
             let tbVal = (val / 1000).toFixed(1);
-            
-            // Remove o .0 se for redondo (ex: 2.0 vira 2)
-            if(tbVal.endsWith('.0')) {
-                tbVal = tbVal.replace('.0', '');
-            }
-            
+            if(tbVal.endsWith('.0')) tbVal = tbVal.replace('.0', '');
             formattedVal = tbVal + " TB";
             linkVal = tbVal + "TB";
         } else {
@@ -158,11 +152,93 @@ function updateStorage(val) {
             linkVal = val + "GB";
         }
 
-        // Atualiza o visual
         display.innerText = formattedVal;
         btnText.innerText = formattedVal;
         
-        // Atualiza o link do botão para já chegar no contato com o valor certo
-        btnLink.href = `pageContato.html?plano=BackupPersonalizado&gb=${linkVal}`;
+        // Redireciona corretamente usando as URLs limpas
+        btnLink.href = `/contato?assunto=CoreBackupPersonalizado&gb=${linkVal}`;
     }
-}
+} // <-- AQUI ESTAVA FALTANDO A CHAVE DE FECHAMENTO!
+
+
+/* =========================================
+   LÓGICA DO SIMULADOR WHITE LABEL (PARCEIROS)
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Procura o campo de nome para saber se estamos na página certa
+    const appNameInput = document.getElementById('appName');
+    
+    if(appNameInput) {
+        console.log("✅ Script do Simulador ativado com sucesso!");
+        
+        const windowTitleText = document.getElementById('windowTitleText');
+        const previewName = document.getElementById('previewName');
+        const previewImage = document.getElementById('previewImage');
+        const logoUpload = document.getElementById('appLogo');
+        const removeLogoBtn = document.getElementById('removeLogoBtn');
+        const bgColorPicker = document.getElementById('bgColor');
+        const btnColorPicker = document.getElementById('btnColor');
+        const windowContent = document.getElementById('windowContent');
+        const previewBtn = document.getElementById('previewBtn');
+        const cloudProviderSelect = document.getElementById('cloudProvider');
+        const previewCloudText = document.getElementById('previewCloud');
+
+        // 1. Muda Nome
+        appNameInput.addEventListener('input', function(e) {
+            const newName = e.target.value || "CoreBackup";
+            previewName.textContent = newName;
+            windowTitleText.textContent = `Login - ${newName}`;
+        });
+
+        // 2. Upload Logo
+        logoUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    previewName.style.display = 'none';
+                    previewImage.src = event.target.result;
+                    previewImage.style.display = 'block';
+                    removeLogoBtn.style.display = 'inline-block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 3. Remove Logo
+        removeLogoBtn.addEventListener('click', function() {
+            logoUpload.value = ''; 
+            previewImage.style.display = 'none';
+            previewImage.src = '';
+            previewName.style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        // 4. Cores
+        if(bgColorPicker && windowContent) {
+            bgColorPicker.addEventListener('input', function(e) {
+                windowContent.style.backgroundColor = e.target.value;
+            });
+        }
+
+        if(btnColorPicker && previewBtn) {
+            btnColorPicker.addEventListener('input', function(e) {
+                previewBtn.style.backgroundColor = e.target.value;
+            });
+        }
+
+        // 5. Nuvem
+        if(cloudProviderSelect && previewCloudText) {
+            cloudProviderSelect.addEventListener('change', function(e) {
+                previewCloudText.textContent = e.target.value;
+                previewCloudText.style.opacity = 0;
+                setTimeout(() => {
+                    previewCloudText.style.opacity = 1;
+                    previewCloudText.style.transition = "opacity 0.3s ease";
+                }, 100);
+            });
+        }
+    }
+});

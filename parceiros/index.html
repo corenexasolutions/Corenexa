@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../img/ico.png" />
+    <title>Seja um Parceiro White Label - CoreBackup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GBYZSDWBYW');
+    </script>
+</head>
+<body class="partner-body">
+
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Voltar ao Site Principal</a></li>
+                <li><a href="#tabela-precos" class="btn-cta btn-partner-nav">Tabela de Preços</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="partner-hero">
+        <div class="container">
+            <span class="badge-tech">Programa de Canais MSP</span>
+            <h1>Sua própria empresa de <br><span class="text-gradient">Backup em Nuvem</span></h1>
+            <p>Software 100% White Label. Utilize nossa tecnologia com a <strong>sua marca</strong>, defina seu próprio preço de venda e gerencie todos os clientes em um único painel.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>100%</strong>
+                    <span>White Label</span>
+                </div>
+                <div class="stat">
+                    <strong>+100%</strong>
+                    <span>Lucro Médio</span>
+                </div>
+                <div class="stat">
+                    <strong>Zero</strong>
+                    <span>Custo de Setup</span>
+                </div>
+            </div>
+
+            <a href="#simulador" class="btn-large-tech">Testar Personalização</a>
+        </div>
+    </section>
+
+    <section class="partner-benefits" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>O modelo ideal para <span style="color:var(--azul);">Empresas de TI</span></h2>
+                <p>Pare de perder margem revendendo grandes players. Assuma o controle.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon-tech">🎛️</div>
+                    <h3>Painel Multi-Tenant</h3>
+                    <p>Gerencie todos os seus clientes em um único portal. Crie contas, altere cotas de espaço, suspenda inadimplentes e veja o consumo global.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-tech">💰</div>
+                    <h3>Margem Protegida</h3>
+                    <p>Compre o armazenamento a preço de atacado e venda pelo valor que desejar. Nós não tabelamos o seu serviço.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-tech">☁️</div>
+                    <h3>Multi-Cloud Ready</h3>
+                    <p>Utilize a Nuvem CoreBackup pronta para uso, ou conecte seu próprio bucket S3 (Wasabi, Amazon, Google) e pague apenas pela licença.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="customizer-section">
+        <div class="container">
+            <div class="customizer-header">
+                <span class="badge-tech">Simulador em Tempo Real</span>
+                <h2><span style="color:var(--laranja);">Sua Marca</span> em evidência</h2>
+                <p>O cliente final nunca saberá que a CoreNexa existe. Teste abaixo como ficará o aplicativo instalado no servidor do seu cliente.</p>
+            </div>
+
+            <div class="customizer-layout">
+                
+                <div class="controls-panel">
+                    <h3>Opções de Personalização</h3>
+                    
+                    <div class="control-group">
+                        <label for="appName">Nome do seu Software</label>
+                        <input type="text" id="appName" value="CoreBackup" placeholder="Ex: MeuBackup Turbo">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Sua Logomarca (Imagem)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="appLogo" accept="image/png, image/jpeg, image/svg+xml">
+                            <small>Use PNG com fundo transparente ou branco.</small>
+                        </div>
+                        <button id="removeLogoBtn" class="btn-small-outline" style="display:none; margin-top:10px;">Remover Imagem</button>
+                    </div>
+
+                    <div class="control-group row-colors">
+                        <div class="color-picker-box">
+                            <label for="bgColor">Cor de Fundo</label>
+                            <input type="color" id="bgColor" value="#1c1c1c">
+                        </div>
+                        <div class="color-picker-box">
+                            <label for="btnColor">Cor do Botão</label>
+                            <input type="color" id="btnColor" value="#228b22">
+                        </div>
+                    </div>
+
+                    <div class="control-group" style="margin-top: 20px;">
+                        <label for="cloudProvider">Provedor de Armazenamento</label>
+                        <select id="cloudProvider" class="form-select">
+                            <option value="☁️ CoreBackup Cloud">☁️ CoreBackup Cloud (Recomendado)</option>
+                            <option value="🔥 Wasabi Hot Storage">🔥 Wasabi Hot Storage</option>
+                            <option value="📦 Amazon S3">📦 Amazon S3</option>
+                        </select>
+                        <small style="color:#666; font-size:12px; display:block; margin-top:5px;">Qual nuvem receberá os dados?</small>
+                    </div>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="window-mockup">
+                        <div class="window-titlebar">
+                            <div class="titlebar-left">
+                                <span class="app-icon">🛡️</span>
+                                <span id="windowTitleText">Login - CoreBackup</span>
+                            </div>
+                            <div class="titlebar-right">
+                                <span class="win-btn minimize">_</span>
+                                <span class="win-btn maximize">□</span>
+                                <span class="win-btn close-btn">✕</span>
+                            </div>
+                        </div>
+
+                        <div class="window-content" id="windowContent">
+                            <div class="brand-area">
+                                <h1 id="previewName">CoreBackup</h1>
+                                <img id="previewImage" src="" alt="Sua Logo" style="display:none;">
+                            </div>
+
+                            <div class="form-area">
+                                <div class="fake-input-group">
+                                    <label>E-mail:</label>
+                                    <div class="fake-input"></div>
+                                </div>
+                                <div class="fake-input-group">
+                                    <label>Senha:</label>
+                                    <div class="fake-input"></div>
+                                </div>
+                                <div class="fake-checkbox">
+                                    <input type="checkbox" checked disabled>
+                                    <label>Lembrar minhas credenciais</label>
+                                </div>
+                                <button id="previewBtn" class="fake-login-btn">ENTRAR</button>
+                            </div>
+
+                            <div class="window-footer">
+                                <span class="version-text">Ver. 1.0.0.1</span>
+                                <span class="cloud-indicator" id="previewCloud">☁️ CoreBackup Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+	
+	<section id="tabela-precos" class="partner-pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparência e <span style="color:var(--azul);">Lucratividade</span></h2>
+                <p>Veja quanto custa no atacado e por quanto você pode revender. Suas margens chegam a ultrapassar 100%.</p>
+            </div>
+
+            <div class="pricing-model-box">
+                <div class="model-header">
+                    <h3>☁️ Modelo All-in-One (Licença + CoreBackup Cloud)</h3>
+                    <p>Você compra o "Pool" de armazenamento e divide entre seus clientes como quiser. Licenças de software ilimitadas.</p>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="partner-table">
+                        <thead>
+                            <tr>
+                                <th>Pacote de Espaço (Pool)</th>
+                                <th>Seu Custo (Atacado)</th>
+                                <th>Sugestão de Venda (Varejo)</th>
+                                <th>Seu Lucro Estimado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>100 GB</strong></td>
+                                <td class="cost">R$ 39,90 /mês</td>
+                                <td class="retail">R$ 89,90 /mês</td>
+                                <td class="profit">+ R$ 50,00 <span class="badge-profit">(125%)</span></td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>500 GB</strong></td>
+                                <td class="cost">R$ 139,90 /mês</td>
+                                <td class="retail">R$ 299,90 /mês</td>
+                                <td class="profit">+ R$ 160,00 <span class="badge-profit">(114%)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1 TB (1000 GB)</strong></td>
+                                <td class="cost">R$ 239,90 /mês</td>
+                                <td class="retail">R$ 499,90 /mês</td>
+                                <td class="profit">+ R$ 260,00 <span class="badge-profit">(108%)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pricing-model-box byos-model">
+                <div class="model-header">
+                    <h3>🔌 Modelo BYOS (Traga sua Nuvem / Apenas Licença)</h3>
+                    <p>Ideal para parceiros que já possuem contrato com Wasabi, Amazon S3. Você paga apenas pelo uso do software CoreBackup.</p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="partner-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Dispositivo</th>
+                                <th>Seu Custo (Licença)</th>
+                                <th>Sugestão de Venda (Serviço)</th>
+                                <th>Observação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Servidor (Windows Server / SQL)</strong></td>
+                                <td class="cost">R$ 25,00 /mês</td>
+                                <td class="retail">R$ 90,00 a R$ 150,00</td>
+                                <td>O custo da nuvem será pago por você direto ao seu provedor S3.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Workstation (PC / Notebook)</strong></td>
+                                <td class="cost">R$ 10,00 /mês</td>
+                                <td class="retail">R$ 35,00 a R$ 60,00</td>
+                                <td>Cobrança por máquina ativada no painel.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+	
+    <section id="cadastro-parceiro" class="partner-form-section">
+        <div class="form-container-tech">
+            <div class="form-header-tech">
+                <h3>Solicitar Tabela de Preços</h3>
+                <p>Preencha os dados abaixo para receber as condições comerciais exclusivas para parceiros de TI.</p>
+            </div>
+
+            <form action="https://formspree.io/f/xeoyrdeg" method="POST">
+                <input type="hidden" name="_next" value="/obrigado">
+                <input type="hidden" name="tipo_contato" value="REVENDA_COREBACKUP">
+
+                <div class="input-group-tech">
+                    <label>Nome do Responsável</label>
+                    <input type="text" name="nome" required placeholder="Ex: Weuller Santos">
+                </div>
+
+                <div class="input-group-tech">
+                    <label>Nome da Empresa de TI</label>
+                    <input type="text" name="empresa" required placeholder="Sua Empresa">
+                </div>
+
+                <div class="row-2-col">
+                    <div class="input-group-tech">
+                        <label>CNPJ</label>
+                        <input type="text" name="cnpj" required placeholder="00.000.000/0001-00">
+                    </div>
+                    <div class="input-group-tech">
+                        <label>WhatsApp</label>
+                        <input type="tel" name="whatsapp" required placeholder="(31) 99999-9999">
+                    </div>
+                </div>
+
+                <div class="input-group-tech">
+                    <label>Qual modelo te interessa mais?</label>
+                    <select name="interesse_modelo">
+                        <option value="Completo (Licença + Nuvem CoreNexa)">Completo (Quero usar a Nuvem CoreNexa)</option>
+                        <option value="BYOS (Apenas Licença, já tenho Wasabi/S3)">BYOS (Já tenho minha nuvem, quero só a licença)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit-tech">Quero ser um Parceiro 🚀</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer-tech">
+        <p>© 2026 CoreNexa Partners - Divisão de Canais.</p>
+        <p><a href="/" style="color:#888;">Voltar ao site principal</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>
