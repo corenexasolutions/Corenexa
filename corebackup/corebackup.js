@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
         previewBtn.style.backgroundColor = e.target.value;
     });
 
-<<<<<<< HEAD:corebackup/coreBackup.js
 // --- Referências da Nuvem ---
     const cloudProviderSelect = document.getElementById('cloudProvider');
     const previewCloudText = document.getElementById('previewCloud');
@@ -91,6 +90,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
-=======
-});
->>>>>>> ef9f5bc012b15a7043f78572c27c31d3d83b8f43:corebackup/corebackup.js
