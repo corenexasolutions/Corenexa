@@ -4,133 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../img/ico.png" />
-    <title>CoreBackup - Personalize seu Software</title>
+    <title>CoreBackup - Proteção de Dados e Anti-Ransomware</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="corebackup.css"> 
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GBYZSDWBYW');
+    </script>
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <a href="../index.html">
+            <a href="/">
                 <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
             </a>
         </div>
+        
+        <div class="mobile-menu-icon">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+
         <nav>
             <ul class="nav-links">
-                <li><a href="../index.html">Início</a></li>
-                <!-- <li><a href="pageRevenda.html">Área do Parceiro</a></li> -->
+                <li><a href="/">Início</a></li>
+                <li class="dropdown-item">
+                    <a href="../servicos" class="dropdown-link" style="color:var(--azul); font-weight:700;">Serviços ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../corebackup">CoreBackup Cloud</a></li>
+                        <li><a href="../suporte-agil">Suporte Ágil</a></li>
+                        <li><a href="../gestao-360">Gestão 360º</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sobre">Sobre</a></li>
+                <li><a href="../contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="customizer-section">
+    <section class="dp-hero">
+        <div class="dp-hero-content">
+            <span class="badge-security">🔒 O Cofre Digital da sua Empresa</span>
+            <h1>Conheça o <span style="color: var(--laranja);">CoreBackup</span></h1>
+            <p>Esqueça os HDs externos manuais. Proteja seu negócio contra falhas, exclusões acidentais e ataques de Ransomware com nossa solução automatizada em nuvem e local.</p>
+            <div class="dp-buttons">
+                <a href="#planos" class="btn-cta">Ver Planos e Preços</a>
+                <a href="https://wa.me/5531984782011" class="btn-outline-light">Falar com Especialista</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="software-features">
         <div class="container">
-            <div class="customizer-header">
-                <span class="badge-tech">White Label</span>
-                <h2>CoreBackup: <span style="color:var(--laranja);">Sua Marca</span>, Nossa Tecnologia</h2>
-                <p>Veja em tempo real como o software ficará para o seu cliente final. Personalize o nome, logotipo e as cores do aplicativo.</p>
+            <div class="section-header">
+                <h2>Por que sua empresa precisa do <span>CoreBackup?</span></h2>
+                <p>Muito mais que um "Google Drive". Um software corporativo feito para garantir a continuidade do seu negócio.</p>
             </div>
 
-            <div class="customizer-layout">
+            <div class="sf-grid">
+                <div class="sf-card">
+                    <div class="sf-icon">⚙️</div>
+                    <h3>100% Automatizado</h3>
+                    <p>Você define os horários e o software faz o resto silenciosamente. Ninguém precisa lembrar de "salvar os arquivos".</p>
+                </div>
+                <div class="sf-card">
+                    <div class="sf-icon">🏛️</div>
+                    <h3>Sistemas do Governo</h3>
+                    <p>Fazemos backup a quente de Bancos de Dados (SQL) e pastas de programas como <strong>Receita Federal, SEFIP, eSocial e conectividade social</strong>.</p>
+                </div>
+                <div class="sf-card">
+                    <div class="sf-icon">💽</div>
+                    <h3>Cópia Local (Híbrida)</h3>
+                    <p>Acesse seus arquivos rápido, mesmo sem internet. Salve uma cópia no seu HD Externo ou Servidor Local simultaneamente com a nuvem.</p>
+                </div>
+                <div class="sf-card">
+                    <div class="sf-icon">🔐</div>
+                    <h3>Criptografia Militar</h3>
+                    <p>Seus dados são criptografados (AES-256) antes mesmo de saírem do seu servidor. Só você tem a chave de acesso aos dados.</p>
+                </div>
+                <div class="sf-card">
+                    <div class="sf-icon">🛡️</div>
+                    <h3>Anti-Ransomware</h3>
+                    <p>Nossa nuvem bloqueia alterações maliciosas. Se um vírus sequestrar seu computador, recuperamos seus dados intactos em minutos.</p>
+                </div>
+                <div class="sf-card">
+                    <div class="sf-icon">📊</div>
+                    <h3>Relatórios Diários</h3>
+                    <p>Receba por e-mail a confirmação de que seus arquivos vitais, sistemas médicos e documentos jurídicos foram salvos com sucesso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="integrations-banner">
+        <div class="container">
+            <h3>Conecte à sua nuvem favorita</h3>
+            <p>Sua empresa já possui armazenamento? O CoreBackup se integra nativamente às maiores plataformas do mercado para gerenciar os seus backups corporativos.</p>
+            
+            <div class="cloud-logos">
+                <div class="cloud-item">
+                    <span>☁️</span> Google Drive
+                </div>
+                <div class="cloud-item">
+                    <span>🟦</span> Microsoft OneDrive
+                </div>
+                <div class="cloud-item">
+                    <span>📦</span> Dropbox
+                </div>
+                <div class="cloud-item">
+                    <span>🔴</span> MEGA
+                </div>
+                <div class="cloud-item">
+                    <span>🛡️</span> CoreBackup Cloud
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" class="pricing-section" style="background-color: #f8fafc;">
+        <div class="section-header">
+            <h2>Planos <span>All-in-One</span></h2>
+            <p>Licença do Software CoreBackup + Espaço na Nuvem já inclusos no pacote.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="plan-card" style="background: white;">
+                <h3 class="plan-name">Entry 100GB</h3>
+                <div class="price-box">
+                    <span class="currency">R$</span>
+                    <span class="value">89,90</span>
+                    <span class="period">/mês</span>
+                </div>
+                <p class="plan-limit">100 GB em Nuvem</p>
+                <ul class="features-list">
+                    <li>Ideal para Documentos e XMLs</li>
+                    <li>Backup Automático Diário</li>
+                    <li>Retenção de 30 dias</li>
+                </ul>
+                <a href="/contato?assunto=CoreBackup100GB" class="btn-plan btn-outline">Contratar Agora</a>
+            </div>
+
+            <div class="plan-card popular">
+                <div class="popular-tag">Mais Vendido</div>
+                <h3 class="plan-name">Business 500GB</h3>
+                <div class="price-box">
+                    <span class="currency">R$</span>
+                    <span class="value">299,90</span>
+                    <span class="period">/mês</span>
+                </div>
+                <p class="plan-limit">500 GB em Nuvem</p>
+                <ul class="features-list">
+                    <li class="included">Ideal para Servidores e Clínicas</li>
+                    <li>Proteção contra Ransomware</li>
+                    <li>Backup de Bancos SQL</li>
+                    <li>Suporte Prioritário</li>
+                </ul>
+                <a href="/contato?assunto=CoreBackup500GB" class="btn-plan btn-filled">Contratar Agora</a>
+            </div>
+
+            <div class="plan-card" style="background: white;">
+                <h3 class="plan-name">Enterprise 1TB</h3>
+                <div class="price-box">
+                    <span class="currency">R$</span>
+                    <span class="value">499,90</span>
+                    <span class="period">/mês</span>
+                </div>
+                <p class="plan-limit">1 TB (1000 GB) em Nuvem</p>
+                <ul class="features-list">
+                    <li class="included">Para grandes volumes</li>
+                    <li>Ambientes Híbridos</li>
+                    <li>Backup de Imagem de Sistema</li>
+                    <li>Relatórios Gerenciais</li>
+                </ul>
+                <a href="/contato?assunto=CoreBackup1TB" class="btn-plan btn-outline">Contratar Agora</a>
+            </div>
+        </div>
+
+        <div class="container" style="max-width: 800px;">
+            <div class="storage-slider-container">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h3 style="color: var(--azul);">Precisa de um tamanho específico?</h3>
+                    <p style="color: #666; font-size: 14px;">Arraste para simular o armazenamento necessário para o seu servidor.</p>
+                </div>
                 
-                <div class="controls-panel">
-                    <h3>Opções de Personalização</h3>
-                    
-                    <div class="control-group">
-                        <label for="appName">Nome do Software</label>
-                        <input type="text" id="appName" value="CoreBackup" placeholder="Ex: MeuBackup Turbo">
-                    </div>
-
-                    <div class="control-group">
-                        <label>Ou envie o seu Logotipo (Imagem)</label>
-                        <div class="file-upload-wrapper">
-                            <input type="file" id="appLogo" accept="image/png, image/jpeg, image/svg+xml">
-                            <small>Formatos recomendados: PNG transparente ou Branco.</small>
-                        </div>
-                        <button id="removeLogoBtn" class="btn-small-outline" style="display:none; margin-top:10px;">Remover Imagem e Voltar Texto</button>
-                    </div>
-
-                    <div class="control-group row-colors">
-                        <div class="color-picker-box">
-                            <label for="bgColor">Cor de Fundo</label>
-                            <input type="color" id="bgColor" value="#1c1c1c">
-                        </div>
-                        <div class="color-picker-box">
-                            <label for="btnColor">Cor do Botão</label>
-                            <input type="color" id="btnColor" value="#228b22">
-                        </div>
-						
-                    </div>
-					
-					<div class="control-group" style="margin-top: 20px;">
-                        <label for="cloudProvider">Provedor de Armazenamento</label>
-                        <select id="cloudProvider" class="form-select">
-                            <option value="☁️ CoreBackup Cloud">☁️ CoreBackup Cloud (Recomendado)</option>
-                            <option value="🔥 Wasabi Hot Storage">🔥 Wasabi Hot Storage</option>
-                            <option value="📦 Amazon S3">📦 Amazon S3</option>
-                        </select>
-                        <small style="color:#666; font-size:12px; display:block; margin-top:5px;">Define o ícone de conexão no rodapé do app.</small>
-						</div>
+                <div class="slider-wrapper">
+                    <input type="range" id="storageRange" min="100" max="5000" step="50" value="1500" oninput="updateStorage(this.value)">
+                    <div class="gb-display" id="storageDisplay">1.5 TB</div>
                 </div>
 
-                <div class="preview-panel">
-                    <div class="window-mockup">
-                        <div class="window-titlebar">
-                            <div class="titlebar-left">
-                                <span class="app-icon">🛡️</span>
-                                <span id="windowTitleText">Login - CoreBackup</span>
-                            </div>
-                            <div class="titlebar-right">
-                                <span class="win-btn minimize">_</span>
-                                <span class="win-btn maximize">□</span>
-                                <span class="win-btn close-btn">✕</span>
-                            </div>
-                        </div>
-
-                        <div class="window-content" id="windowContent">
-                            
-                            <div class="brand-area">
-                                <h1 id="previewName">CoreBackup</h1>
-                                <img id="previewImage" src="" alt="Sua Logo" style="display:none;">
-                            </div>
-
-                            <div class="form-area">
-                                <div class="fake-input-group">
-                                    <label>E-mail:</label>
-                                    <div class="fake-input"></div>
-                                </div>
-                                
-                                <div class="fake-input-group">
-                                    <label>Senha:</label>
-                                    <div class="fake-input"></div>
-                                </div>
-
-                                <div class="fake-checkbox">
-                                    <input type="checkbox" checked disabled>
-                                    <label>Lembrar minhas credenciais</label>
-                                </div>
-
-                                <button id="previewBtn" class="fake-login-btn">ENTRAR</button>
-                            </div>
-
-                            <div class="window-footer">
-                                <span class="version-text">Ver. 1.0.0.1</span>
-                                <span class="cloud-indicator" id="previewCloud">☁️ CoreBackup Cloud</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="custom-cta-box">
+                    <a id="btnCustomStorage" href="/contato?assunto=CoreBackupPersonalizado&gb=1500GB" class="btn-cta">
+                        Solicitar Orçamento para <span id="btnTextStorage">1.5 TB</span>
+                    </a>
                 </div>
-
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
+        <img src="../img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
+        <p>Conectando o presente ao futuro da tecnologia.</p>
+        <br>
+        <p>© 2026 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
+        
+        <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <p style="font-size: 12px; color: #888;">
+                Você é prestador de serviços de TI? 
+                <a href="/parceiros-corebackup" style="color: var(--laranja); text-decoration: none; font-weight: bold;">
+                    Conheça nosso Programa de Revenda White Label.
+                </a>
+            </p>
+        </div>
     </footer>
 
-    <script src="corebackup.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
