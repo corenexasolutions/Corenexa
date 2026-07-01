@@ -3,111 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="img/ico.png" />
-    <title>CoreNexa - Soluções em TI</title>
+    <link rel="icon" type="image/x-icon" href="/img/ico.png" />
+    <title>CoreNexa - Tecnologia que faz sua empresa crescer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW">
-	</script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'G-GBYZSDWBYW');
-	</script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GBYZSDWBYW');
+    </script>
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header>
-    <div class="logo">
-        <a href="index.html">
-            <img src="img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
-        </a>
-    </div>
+        <div class="logo">
+            <a href="/">
+                <img src="/img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
+            </a>
+        </div>
 
-    <div class="mobile-menu-icon">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
+        <div class="mobile-menu-icon">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
 
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html" style="color:var(--azul); font-weight:700;">Início</a></li>
-			
-            <li class="dropdown-item">
-                    <a href="/servicos" class="dropdown-link" font-weight:700;">Serviços ▾</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/" style="color:var(--azul); font-weight:700;">Início</a></li>
+                <li class="dropdown-item">
+                    <a href="/servicos" class="dropdown-link" style="font-weight:700;">Serviços ▾</a>
                     <ul class="dropdown-menu">
-						<li><a href="/gestao360">Gestão de TI 360º</a></li>
-						<li><a href="/suporte">Suporte de TI</a></li>
-						<li><a href="/servicosavulsos">Serviços Avulsos</a></li>
-						<li><a href="/corebackup">CoreBackup</a></li>
+                        <li><a href="/gestao360">Gestão de TI 360º</a></li>
+                        <li><a href="/corebackup">Backup em Nuvem</a></li>
+                        <li><a href="/corecloud">Hospedagem de Sistemas</a></li>
+                        <li><a href="/suporte">Suporte Técnico</a></li>
                     </ul>
                 </li>
-			
-            <li><a href="/sobre">Sobre</a></li>
-            <li><a href="/contato">Contato</a></li>
-        </ul>
-    </nav>
+                <li><a href="/sobre">Sobre a CoreNexa</a></li>
+                <li><a href="/contato">Contato</a></li>
+            </ul>
+        </nav>
+        <a href="/contato" class="btn-cta">Falar com Especialista</a>
+    </header>
 
-    <a href="/contato" target="_blank" class="btn-cta">Solicitar Orçamento</a>
-</header>
-
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Infraestrutura que <br>Impulsiona seu Negócio</h1>
-            <p>Deixe a gestão da sua rede com quem entende. Segurança, velocidade e monitoramento 24/7 para que você foque apenas no crescimento da sua empresa.</p>
-            <!-- <a href="https://wa.me/5531984782011?text=Ol%C3%A1!%0AGostaria%20de%20conversar%20com%20um%20especialista%20sobre%20os%20servi%C3%A7os%20de%20TI%20prestados." target="_blank" class="btn-cta">Falar com Especialista</a> -->
-        </div>
-        <div class="hero-img">
-    <img src="img/monitoramento.jpg" class="slide active" alt="Monitoramento de Rede">
-    
-    <img src="img/graficos.png" class="slide" alt="Análise de Dados">
-    
-    <img src="img/hardware.png" class="slide" alt="Servidores Seguros">
-</div>
-    </section>
-
-    <section class="services">
-        <h2 class="section-title">Nossas Soluções</h2>
-        <p class="subtitle">Tecnologia de ponta a ponta para sua tranquilidade</p>
-
-        <div class="cards-container">
-            <div class="card">
-                <div class="icon-box">🌐</div>
-                <h3>Gestão de Redes</h3>
-                <p>Monitoramento ativo, configuração de servidores e otimização de wi-fi corporativo para máxima velocidade.</p>
+    <!-- 1. HERO SECTION PRINCIPAL DA HOME -->
+    <section class="home-hero">
+        <div class="container home-hero-flex">
+            <div class="home-hero-content">
+                <span class="badge-tech-light">☁️ Traga seu sistema para a Nuvem</span>
+                <h1>Sua empresa na nuvem. Sem <span class="text-gradient">servidores físicos</span> no escritório.</h1>
+                
+                <p>Esqueça os gastos com manutenção de servidores caros e o medo de perder dados. Assumimos a TI da sua empresa e levamos seu sistema para a nuvem: mais velocidade, backup automático e <strong>zero responsabilidade para você</strong>.</p>
+                
+                <div class="hero-action-buttons">
+                    <a href="/contato" class="btn-cta">Migrar para a Nuvem</a>
+                    <a href="#solucoes" class="btn-outline-light" style="margin-left: 15px;">Ver Serviços</a>
+                </div>
             </div>
-
-            <!-- <div class="card"> -->
-                <!-- <div class="icon-box">🔒</div> -->
-                <!-- <h3>Segurança Digital</h3> -->
-                <!-- <p>Proteção contra ataques, firewalls avançados e backups automáticos para garantir a integridade dos seus dados.</p> -->
-            <!-- </div> -->
-
-            <div class="card">
-                <div class="icon-box">☁️</div>
-                <h3>Backup em Nuvem</h3>
-                <p>Backup em nuvem criptografado e proteção contra Ransomware. Garanta que seus dados sobrevivam a qualquer desastre.</p>
-            </div>
-
-            <div class="card">
-                <div class="icon-box">🛠️</div>
-                <h3>Suporte Técnico</h3>
-                <p>Helpdesk ágil para resolver problemas do dia a dia da sua equipe, presencial ou remotamente.</p>
+            
+            <div class="home-hero-visual">
+                <img src="/img/hardware.png" alt="Segurança de Dados CoreNexa" class="floating-server">
+                
+                <div class="floating-status s1">
+                    <span class="status-dot"></span> Adeus Servidor Local
+                </div>
+                <div class="floating-status s2">
+                    <span class="status-dot blue"></span> Backup Automático
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- 2. ÚNICA FAIXA DE VALORES (Atuando como prova social/benefícios) -->
+    <section class="trust-banner">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <h3>Zero</h3>
+                <p>Dor de cabeça com TI</p>
+            </div>
+            <div class="trust-item">
+                <h3>Rápido</h3>
+                <p>Sistemas sem travamentos</p>
+            </div>
+            <div class="trust-item">
+                <h3>Automático</h3>
+                <p>Backups sem você lembrar</p>
+            </div>
+            <div class="trust-item">
+                <h3>Blindado</h3>
+                <p>Proteção contra Vírus e Hackers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. VITRINE DE SERVIÇOS (Aqui o cliente decide para onde ir) -->
+    <section id="solucoes" class="home-services">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Tudo o que sua empresa precisa em <span style="color:var(--azul);">um só lugar</span></h2>
+                <p>Seja para resolver um problema rápido, proteger seus documentos ou terceirizar toda a TI. Nós temos a solução certa para o seu momento.</p>
+            </div>
+            
+            <div class="services-modern-grid">
+                
+                <!-- Gestão 360 -->
+                <a href="/gestao360" class="service-modern-card highlight-card">
+                    <div class="card-icon">🏢</div>
+                    <h3>Gestão de TI 360º</h3>
+                    <p>Funciona como seu próprio departamento de TI. Cuidamos dos seus computadores, servidores, internet e segurança para você não se preocupar com nada.</p>
+                    <span class="card-link">Quero terceirizar a TI →</span>
+                </a>
+
+                <!-- CoreCloud -->
+                <a href="/corecloud" class="service-modern-card">
+                    <div class="card-icon">☁️</div>
+                    <h3>Hospedagem em Nuvem</h3>
+                    <p>Traga seu sistema de gestão (ERP) para a nuvem da CoreNexa. Elimine a necessidade de ter servidores caros no seu escritório e deixe nossa infraestrutura cuidar de tudo.</p>
+                    <span class="card-link">Migrar meu sistema →</span>
+                </a>
+
+                <!-- CoreBackup -->
+                <a href="/corebackup" class="service-modern-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Backup em Nuvem</h3>
+                    <p>Esqueça os HDs externos e o medo de perder dados. O sistema faz cópias de segurança automáticas. Você nunca mais vai precisar se preocupar em fazer backup.</p>
+                    <span class="card-link">Quero proteger meus dados →</span>
+                </a>
+
+                <!-- Suporte Ágil -->
+                <a href="/suporte" class="service-modern-card">
+                    <div class="card-icon">👨‍💻</div>
+                    <h3>Suporte Ágil (Helpdesk)</h3>
+                    <p>O computador parou? A internet caiu? Nossa equipe está pronta para resolver os problemas do dia a dia da sua empresa de forma rápida, via acesso remoto ou visita técnica.</p>
+                    <span class="card-link">Preciso de suporte →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CHAMADA FINAL PARA AÇÃO (CTA) -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Pare de perder dinheiro com paradas de tecnologia.</h2>
+            <p>Agende um bate-papo sem compromisso e descubra como podemos organizar a TI da sua empresa.</p>
+            <a href="/contato" class="btn-cta" style="display:inline-block; margin-top:15px; font-size:18px;">Solicitar Diagnóstico Gratuito</a>
+        </div>
+    </section>
+
+    <!-- 5. RODAPÉ -->
     <footer>
-        <img src="img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
+        <img src="/img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
         <p>Conectando o presente ao futuro da tecnologia.</p>
         <br>
-        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
+        <p>© 2026 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
     </footer>
-<script src="script.js"></script>
-</body>
 
+    <script src="/script.js"></script>
+</body>
 </html>
