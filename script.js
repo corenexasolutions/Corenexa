@@ -1,244 +1,274 @@
-/* Arquivo: script.js */
+/* ==========================================================
+   CORENEXA V2
+   script.js
+========================================================== */
 
-// --- LÓGICA DO CARROSSEL (SLIDESHOW) ---
-const slides = document.querySelectorAll('.hero-img .slide');
+document.addEventListener("DOMContentLoaded", () => {
 
-// A "proteção": Só roda o código do carrossel se houver slides na página
-if (slides.length > 0) {
-    let currentSlide = 0;
-    const slideInterval = 4000;
+    /* ==========================================================
+       HEADER STICKY
+    ========================================================== */
 
-    function nextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+    const header = document.querySelector(".header-modern");
+
+    function updateHeader() {
+
+        if (!header) return;
+
+        if (window.scrollY > 40) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
     }
 
-    setInterval(nextSlide, slideInterval);
-}
+    updateHeader();
 
+    window.addEventListener("scroll", updateHeader);
 
-// --- LÓGICA DO MENU MOBILE ---
-const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-const navLinks = document.querySelector('.nav-links');
+    /* ==========================================================
+       MENU MOBILE
+    ========================================================== */
 
-// A proteção: Só tenta adicionar o clique se o botão existir
-if (mobileMenuIcon && navLinks) {
-    mobileMenuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    const toggle = document.querySelector(".mobile-toggle");
+    const menu = document.querySelector(".nav-menu");
+
+    if (toggle && menu) {
+
+        toggle.addEventListener("click", () => {
+
+            menu.classList.toggle("mobile-open");
+
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menu.classList.remove("mobile-open");
+
+            });
+
+        });
+
+    }
+
+    /* ==========================================================
+       SCROLL SUAVE
+    ========================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        anchor.addEventListener("click", function (e) {
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+
+                behavior: "smooth",
+                block: "start"
+
+            });
+
+        });
+
     });
-}
 
-/* --- Lógica de Envio de Formulário (AJAX com Redirecionamento) --- */
-const form = document.getElementById("my-form");
+    /* ==========================================================
+       SCROLL TO TOP
+    ========================================================== */
 
-if (form) {
-    async function handleSubmit(event) {
-        event.preventDefault(); // Impede o site de mudar de página imediatamente
-        
-        const status = document.getElementById("my-form-status");
-        const data = new FormData(event.target);
-        
-        // Envia os dados para o Formspree em segundo plano
-        fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                // --- SUCESSO ---
-                status.innerHTML = "Obrigado! Mensagem enviada. Redirecionando...";
-                status.classList.add('success'); // Fica verde
-                form.reset(); // Limpa os campos
+    const scrollBtn = document.querySelector(".scroll-top");
 
-                // AGUARDA 2 SEGUNDOS E REDIRECIONA
-                setTimeout(() => {
-                    // Como você está usando URLs limpas, redireciona para /obrigado
-                    window.location.href = "/obrigado"; 
-                }, 2000);
+    if (scrollBtn) {
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                scrollBtn.classList.add("show");
 
             } else {
-                // --- ERRO ---
-                response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                    } else {
-                        status.innerHTML = "Oops! Ocorreu um erro ao enviar.";
-                    }
-                    status.classList.add('error'); // Fica vermelho
-                })
+
+                scrollBtn.classList.remove("show");
+
             }
-        }).catch(error => {
-            // --- ERRO DE CONEXÃO ---
-            status.innerHTML = "Oops! Houve um problema na conexão.";
-            status.classList.add('error');
-        });
-    }
 
-    form.addEventListener("submit", handleSubmit);
-}
-
-/* --- PREENCHIMENTO AUTOMÁTICO DO PLANO (Página de Contato) --- */
-
-// 1. Verifica se estamos na página que tem o campo de mensagem
-const mensagemField = document.getElementById('mensagem');
-
-if (mensagemField) {
-    // 2. Lê a URL do navegador para achar o "?plano=..." ou "?assunto=..."
-    const urlParams = new URLSearchParams(window.location.search);
-    const planoSelecionado = urlParams.get('plano') || urlParams.get('assunto');
-
-    // 3. Se tiver um plano na URL, preenche o texto
-    if (planoSelecionado) {
-        // Formata o texto (ex: Transforma "Intermediario" em "Intermediário")
-        let nomePlano = planoSelecionado;
-        if(planoSelecionado === 'Basico') nomePlano = 'Básico';
-        if(planoSelecionado === 'Intermediario') nomePlano = 'Intermediário';
-        
-        // Escreve no campo de texto
-        mensagemField.value = `Olá! Gostaria de solicitar um orçamento para o Plano ${nomePlano}.\n\nAguardo contato.`;
-    }
-}
-
-/* --- LÓGICA PARA ABRIR O MENU NO CELULAR (AO CLICAR NO NOME) --- */
-document.addEventListener("DOMContentLoaded", function() {
-    // Seleciona o link "Serviços"
-    const menuServicos = document.querySelector('.dropdown-link');
-    // Seleciona o pai (LI) que contém o submenu
-    const parentItem = document.querySelector('.dropdown-item');
-
-    if (menuServicos && parentItem) {
-        menuServicos.addEventListener('click', function(e) {
-            // Verifica se é celular (largura menor ou igual a 768px)
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); // 1. IMPEDE de ir para a página pageServicos.html
-                parentItem.classList.toggle('active'); // 2. Abre ou fecha o menu
-            }
         });
 
-        // Opcional: Fechar o menu se clicar fora dele
-        document.addEventListener('click', function(e) {
-            if (!parentItem.contains(e.target)) {
-                parentItem.classList.remove('active');
-            }
+        scrollBtn.addEventListener("click", () => {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
         });
+
     }
-});
 
+    /* ==========================================================
+       FADE-UP
+    ========================================================== */
 
-/* =========================================
-   LÓGICA DO SLIDER DE BACKUP (CoreBackup)
-   ========================================= */
+    const observer = new IntersectionObserver((entries) => {
 
-function updateStorage(val) {
-    const display = document.getElementById('storageDisplay');
-    const btnText = document.getElementById('btnTextStorage');
-    const btnLink = document.getElementById('btnCustomStorage');
-    
-    // Verifica se os elementos existem na página atual antes de rodar
-    if (display && btnText && btnLink) {
-        let formattedVal = "";
-        let linkVal = "";
+        entries.forEach(entry => {
 
-        if (val >= 1000) {
-            let tbVal = (val / 1000).toFixed(1);
-            if(tbVal.endsWith('.0')) tbVal = tbVal.replace('.0', '');
-            formattedVal = tbVal + " TB";
-            linkVal = tbVal + "TB";
-        } else {
-            formattedVal = val + " GB";
-            linkVal = val + "GB";
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    }, {
+
+        threshold: .15
+
+    });
+
+    document.querySelectorAll(".fade-up").forEach(el => {
+
+        observer.observe(el);
+
+    });
+
+    /* ==========================================================
+       CONTADORES
+    ========================================================== */
+
+    function animateCounter(counter) {
+
+        const target = Number(counter.dataset.target);
+
+        if (!target) return;
+
+        let current = 0;
+
+        const speed = target / 100;
+
+        function update() {
+
+            current += speed;
+
+            if (current >= target) {
+
+                counter.innerText = target.toLocaleString();
+
+                return;
+
+            }
+
+            counter.innerText = Math.floor(current).toLocaleString();
+
+            requestAnimationFrame(update);
+
         }
 
-        display.innerText = formattedVal;
-        btnText.innerText = formattedVal;
-        
-        // Redireciona corretamente usando as URLs limpas
-        btnLink.href = `/contato?assunto=CoreBackupPersonalizado&gb=${linkVal}`;
+        update();
+
     }
-} // <-- AQUI ESTAVA FALTANDO A CHAVE DE FECHAMENTO!
 
+    document.querySelectorAll("[data-target]").forEach(counter => {
 
-/* =========================================
-   LÓGICA DO SIMULADOR WHITE LABEL (PARCEIROS)
-   ========================================= */
+        const counterObserver = new IntersectionObserver(entries => {
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // Procura o campo de nome para saber se estamos na página certa
-    const appNameInput = document.getElementById('appName');
-    
-    if(appNameInput) {
-        console.log("✅ Script do Simulador ativado com sucesso!");
-        
-        const windowTitleText = document.getElementById('windowTitleText');
-        const previewName = document.getElementById('previewName');
-        const previewImage = document.getElementById('previewImage');
-        const logoUpload = document.getElementById('appLogo');
-        const removeLogoBtn = document.getElementById('removeLogoBtn');
-        const bgColorPicker = document.getElementById('bgColor');
-        const btnColorPicker = document.getElementById('btnColor');
-        const windowContent = document.getElementById('windowContent');
-        const previewBtn = document.getElementById('previewBtn');
-        const cloudProviderSelect = document.getElementById('cloudProvider');
-        const previewCloudText = document.getElementById('previewCloud');
+            entries.forEach(entry => {
 
-        // 1. Muda Nome
-        appNameInput.addEventListener('input', function(e) {
-            const newName = e.target.value || "CoreBackup";
-            previewName.textContent = newName;
-            windowTitleText.textContent = `Login - ${newName}`;
-        });
+                if (entry.isIntersecting) {
 
-        // 2. Upload Logo
-        logoUpload.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    previewName.style.display = 'none';
-                    previewImage.src = event.target.result;
-                    previewImage.style.display = 'block';
-                    removeLogoBtn.style.display = 'inline-block';
+                    animateCounter(counter);
+
+                    counterObserver.disconnect();
+
                 }
-                reader.readAsDataURL(file);
-            }
+
+            });
+
         });
 
-        // 3. Remove Logo
-        removeLogoBtn.addEventListener('click', function() {
-            logoUpload.value = ''; 
-            previewImage.style.display = 'none';
-            previewImage.src = '';
-            previewName.style.display = 'block';
-            this.style.display = 'none';
+        counterObserver.observe(counter);
+
+    });
+
+    /* ==========================================================
+       PARALLAX HERO
+    ========================================================== */
+
+    const heroVisual = document.querySelector(".hero-visual");
+
+    window.addEventListener("mousemove", (e) => {
+
+        if (!heroVisual) return;
+
+        const x = (window.innerWidth / 2 - e.clientX) / 60;
+        const y = (window.innerHeight / 2 - e.clientY) / 60;
+
+        heroVisual.style.transform = `translate(${x}px, ${y}px)`;
+
+    });
+
+    /* ==========================================================
+       HOVER 3D
+    ========================================================== */
+
+    const cards = document.querySelectorAll(
+
+        ".problem-card, .service-card, .benefit-card, .workflow-card, .why-card"
+
+    );
+
+    cards.forEach(card => {
+
+        card.addEventListener("mousemove", (e) => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateY = ((x / rect.width) - .5) * 10;
+            const rotateX = ((y / rect.height) - .5) * -10;
+
+            card.style.transform =
+                `perspective(800px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-6px)`;
+
         });
 
-        // 4. Cores
-        if(bgColorPicker && windowContent) {
-            bgColorPicker.addEventListener('input', function(e) {
-                windowContent.style.backgroundColor = e.target.value;
-            });
-        }
+        card.addEventListener("mouseleave", () => {
 
-        if(btnColorPicker && previewBtn) {
-            btnColorPicker.addEventListener('input', function(e) {
-                previewBtn.style.backgroundColor = e.target.value;
-            });
-        }
+            card.style.transform = "";
 
-        // 5. Nuvem
-        if(cloudProviderSelect && previewCloudText) {
-            cloudProviderSelect.addEventListener('change', function(e) {
-                previewCloudText.textContent = e.target.value;
-                previewCloudText.style.opacity = 0;
-                setTimeout(() => {
-                    previewCloudText.style.opacity = 1;
-                    previewCloudText.style.transition = "opacity 0.3s ease";
-                }, 100);
+        });
+
+    });
+
+    /* ==========================================================
+       BOTÕES
+    ========================================================== */
+
+    document.querySelectorAll("button,a.btn-primary-lg,a.btn-secondary-lg")
+        .forEach(btn => {
+
+            btn.addEventListener("mouseenter", () => {
+
+                btn.style.transition = ".3s";
+
             });
-        }
-    }
+
+        });
+
 });

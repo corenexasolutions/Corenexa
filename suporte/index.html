@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../img/ico.png" />
+    <link rel="icon" type="image/x-icon" href="../img/ico-white.png" />
     <title>Planos de Suporte TI - CoreNexa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,169 +16,432 @@
       gtag('js', new Date());
       gtag('config', 'G-GBYZSDWBYW');
     </script>
+
+    <!-- Estilos Específicos V2 para Planos e Calculadora com Slider -->
+    <style>
+        /* Planos Padronizados */
+        .pricing-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .plan-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37,99,235,.25);
+        }
+        .plan-card.popular {
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(180deg, white, #F8FAFC);
+        }
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--secondary), #FB923C);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .plan-name { font-size: 1.6rem; color: var(--dark); margin-bottom: 5px; }
+        .plan-limit { color: var(--primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .price-box { margin-bottom: 10px; color: var(--dark); }
+        .price-box .currency { font-size: 1.2rem; font-weight: 600; vertical-align: top; }
+        .price-box .value { font-size: 3rem; font-weight: 800; line-height: 1; }
+        .price-box .period { font-size: 1rem; color: var(--gray-500); }
+        .contract-info { font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; display: inline-block; padding: 6px 12px; border-radius: 6px; }
+        
+        .features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .features-list li { padding: 10px 0; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); font-size: 0.95rem; display: flex; align-items: center; }
+        .features-list li::before { content: '✔'; color: var(--primary); margin-right: 10px; font-weight: bold; }
+
+        /* Calculadora Personalizada e Slider */
+        .custom-plan { padding: 100px 0; background-color: white; border-top: 1px solid var(--gray-200); }
+        .calculator-wrapper { display: flex; gap: 40px; align-items: center; margin-top: 50px; }
+        .calc-form { flex: 1.5; background: var(--gray-50); padding: 50px 40px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); }
+        
+        .calc-group label { display: block; font-weight: 700; margin-bottom: 15px; color: var(--dark); font-size: 1.1rem; }
+        .calc-group input[type="number"] { width: 90px; padding: 12px; border: 2px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 1.1rem; font-weight: bold; font-family: inherit; background: white; text-align: center; color: var(--primary); transition: var(--transition); }
+        .calc-group input[type="number"]:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37,99,235,.15); }
+        
+        /* Custom Slider Range */
+        input[type=range] { flex: 1; height: 10px; border-radius: 5px; background: var(--gray-200); outline: none; -webkit-appearance: none; cursor: pointer; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 4px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.2s; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); background: var(--secondary); }
+
+        /* Resultado */
+        .calc-result { flex: 1; background: linear-gradient(135deg, var(--dark-3), var(--dark)); color: white; padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); width: 100%; }
+        .calc-result h3 { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; color: white; font-size: 1.4rem; }
+        .total-price { background: rgba(255,255,255,0.05); padding: 25px; border-radius: var(--radius-md); text-align: center; font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); }
+        .total-price small { display: block; font-size: 0.9rem; color: var(--gray-400); font-weight: 500; margin-bottom: 5px; text-transform: uppercase; }
+        
+        .summary-list { list-style: none; margin-bottom: 30px; font-size: 0.95rem; color: var(--gray-300); }
+        .summary-list li { margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.15); padding-bottom: 8px; display: flex; justify-content: space-between; font-weight: 500;}
+        .summary-list li span { color: white; font-weight: 700; }
+
+        @media (max-width: 900px) {
+            .calculator-wrapper { flex-direction: column; }
+            .calc-result { max-width: 100%; }
+        }
+    </style>
 </head>
 <body>
-    
-    <header>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
-            </a>
-        </div>
 
-        <div class="mobile-menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-
-        <nav>
-        <ul class="nav-links">
-            <li><a href="../index.html">Início</a></li>
-			
-            <li class="dropdown-item">
-                    <a href="/servicos" class="dropdown-link" style="color:var(--azul); font-weight:700;">Serviços ▾</a>
-                    <ul class="dropdown-menu">
-						<li><a href="/gestao360">Gestão de TI 360º</a></li>
-						<li><a href="/corebackup">Backup em Nuvem</a></li>
-						<li><a href="/corecloud">Hospedagem de Sistemas</a></li>
-						<li><a href="/suporte" style="color:var(--azul); font-weight:700;">Suporte Técnico</a></li>						
-                    </ul>
-                </li>
-			
-            <li><a href="/sobre">Sobre</a></li>
-            <li><a href="/contato">Contato</a></li>
-        </ul>
-    </nav>
-    </header>
-    
-    <section class="intro-gestao">
-        <div class="container-intro">
-            <span class="tag-destaque">⚡ Suporte de TI Remoto</span>
-            <h1>TI Rápida e sem <br><span>Burocracia</span></h1>
-            <p>Escolha o pacote ideal para sua empresa. Tenha técnicos especialistas a um clique de distância, seja para 3 ou 15 computadores.</p>
-        </div>
-    </section>
-
-    <section class="pricing-section">
-        <div class="section-header">
-            <h2>Pacotes <span>Promocionais</span></h2>
-            <p>O melhor custo-benefício para quem busca tranquilidade imediata.</p>
-        </div>
-
-        <div class="pricing-grid">
-            
-            <div class="plan-card">
-                <h3 class="plan-name">Start</h3>
-                <p class="plan-limit">Até 3 Computadores</p>
-                
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">199,90</span>
-                    <span class="period">/mês (Anual)</span>
-                </div>
-                <p class="contract-info" style="background:#ffebee; color:#c62828;">Economia de R$ 40,00/mês</p>
-                
-                <ul class="features-list">
-                    <li>Suporte Remoto Ilimitado</li>
-                    <li>Atendimento WhatsApp</li>
-                </ul>
-
-                <a href="pageContato.html?plano=SuporteStart" class="btn-plan btn-outline">Contratar Start</a>
-            </div>
-
-            <div class="plan-card popular">
-                <div class="popular-tag">Melhor Custo-benefício</div>
-                <h3 class="plan-name">Business</h3>
-                <p class="plan-limit">Até 8 Computadores</p>
-
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">399,90</span>
-                    <span class="period">/mês (Anual)</span>
-                </div>
-                <p class="contract-info" style="background:#e8f5e9; color:#2e7d32;"><strong>Melhor Preço:</strong> R$ 49,90 por PC</p>
-                
-                <ul class="features-list">
-                    <li>Suporte Remoto Ilimitado</li>
-                    <li>Atendimento WhatsApp</li>
-                </ul>
-
-                <a href="pageContato.html?plano=SuporteBusiness" class="btn-plan btn-filled">Contratar Business</a>
-            </div>
-
-            <div class="plan-card">
-                <h3 class="plan-name">Corporate</h3>
-                <p class="plan-limit">Até 15 Computadores</p>
-
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">699,90</span>
-                    <span class="period">/mês (Anual)</span>
-                </div>
-                <p class="contract-info" style="background:#e3f2fd; color:#1565c0;">Ideal para estruturas maiores</p>
-                
-                <ul class="features-list">
-                    <li>Suporte Remoto Ilimitado</li>
-                    <li>Atendimento WhatsApp</li>
-                </ul>
-
-                <a href="pageContato.html?plano=SuporteCorporate" class="btn-plan btn-outline">Contratar Corporate</a>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="custom-plan" id="personalizado">
+    <!-- ========================= -->
+    <!-- TOP BAR -->
+    <!-- ========================= -->
+    <div class="topbar">
         <div class="container">
-            <div class="custom-header">
-                <h2>Não se encaixou nos pacotes?</h2>
-                <p>Monte um plano <span>Personalizado</span> sob medida.</p>
+            <div class="topbar-content">
+                <span>🟢 Atendimento remoto em todo o Brasil</span>
+                <span>☁️ Especialistas em Infraestrutura e Gestão de TI</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+    <header class="header-modern">
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="../index.html" class="logo">
+                    <img src="../img/logo-corenexa.png" alt="CoreNexa">
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html">Início</a>
+                    <a href="../sobre">Sobre</a>
+                    <a href="../contato" class="btn-header">Falar com Especialista</a>
+                </nav>
+                <div class="mobile-toggle">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================= -->
+    <!-- HERO SECTION V2 -->
+    <!-- ========================= -->
+    <section class="hero-v2">
+        <div class="hero-bg-glow hero-glow-1"></div>
+        <div class="hero-bg-glow hero-glow-2"></div>
+        <div class="container">
+            <div class="hero-grid">
+                
+                <!-- CONTEÚDO -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        ⚡ Suporte de TI Remoto e Helpdesk
+                    </div>
+                    <h1>
+                        TI Rápida e sem <span class="gradient-text">Burocracia.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Escolha o pacote ideal para sua empresa. Tenha técnicos especialistas a um clique de distância para resolver travamentos, erros de sistema e dúvidas da sua equipe, seja para 3 ou 15 computadores.
+                    </p>
+                    
+                    <div class="hero-benefits">
+                        <div class="benefit">✔ Acesso Remoto Imediato</div>
+                        <div class="benefit">✔ Atendimento via WhatsApp</div>
+                        <div class="benefit">✔ Especialistas em ERP</div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#planos" class="btn-primary-lg">Ver Pacotes Promocionais</a>
+                        <a href="#personalizado" class="btn-secondary-lg">Montar Plano Sob Medida</a>
+                    </div>
+                </div>
+
+                <!-- VISUAL DASHBOARD -->
+                <div class="hero-visual">
+                    <div class="cloud-dashboard">
+                        <div class="dashboard-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="dashboard-body">
+                            <div class="server-card">
+                                <div class="server-icon">👨‍💻</div>
+                                <div>
+                                    <strong>Helpdesk CoreNexa</strong>
+                                    <small>Central de Suporte</small>
+                                </div>
+                            </div>
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span>Tempo Médio de Resposta</span>
+                                    <strong style="color: var(--success);">< 5 Minutos</strong>
+                                </div>
+                                <div class="status-item">
+                                    <span>Técnicos Online</span>
+                                    <strong>Disponíveis</strong>
+                                </div>
+                                <div class="status-item">
+                                    <span>Resolução no 1º Contato</span>
+                                    <strong>92%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card floating-card-left">
+                        ⏱️ Acesso Rápido
+                    </div>
+                    <div class="floating-card floating-card-right">
+                        🛠️ Zero Travamentos
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- PACOTES PROMOCIONAIS -->
+    <!-- ========================= -->
+    <section id="planos" class="pricing-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-badge">Planos de Suporte</span>
+                <h2>Pacotes <span class="gradient-text">Promocionais</span></h2>
+                <p>O melhor custo-benefício para quem busca tranquilidade imediata e funcionários produtivos.</p>
             </div>
 
-            <div class="calculator-wrapper" style="align-items: center;">
-                <div class="calc-form" style="max-width: 500px; width:100%;">
+            <div class="pricing-grid">
+                
+                <!-- START -->
+                <div class="plan-card">
+                    <h3 class="plan-name">Start</h3>
+                    <p class="plan-limit">Até 3 Computadores</p>
                     
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">199,90</span>
+                        <span class="period">/mês (Anual)</span>
+                    </div>
+                    <p class="contract-info" style="background:#FEE2E2; color:#B91C1C;">Economia de R$ 40,00/mês</p>
+                    
+                    <ul class="features-list">
+                        <li>Suporte Remoto Ilimitado</li>
+                        <li>Atendimento VIP WhatsApp</li>
+                        <li>Manutenção Preventiva de Sistema</li>
+                    </ul>
+
+                    <a href="/contato?plano=SuporteStart" class="btn-secondary-lg" style="width: 100%;">Contratar Start</a>
+                </div>
+
+                <!-- BUSINESS (POPULAR) -->
+                <div class="plan-card popular">
+                    <div class="popular-tag">Melhor Custo-benefício</div>
+                    <h3 class="plan-name">Business</h3>
+                    <p class="plan-limit">Até 8 Computadores</p>
+
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">399,90</span>
+                        <span class="period">/mês (Anual)</span>
+                    </div>
+                    <p class="contract-info" style="background:#DCFCE7; color:#15803D;"><strong>Melhor Preço:</strong> R$ 49,90 por PC</p>
+                    
+                    <ul class="features-list">
+                        <li class="included">Ideal para Escritórios</li>
+                        <li>Suporte Remoto Ilimitado</li>
+                        <li>Atendimento VIP WhatsApp</li>
+                        <li>Manutenção Preventiva de Sistema</li>
+                    </ul>
+
+                    <a href="/contato?plano=SuporteBusiness" class="btn-primary-lg" style="width: 100%;">Contratar Business</a>
+                </div>
+
+                <!-- CORPORATE -->
+                <div class="plan-card">
+                    <h3 class="plan-name">Corporate</h3>
+                    <p class="plan-limit">Até 15 Computadores</p>
+
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">699,90</span>
+                        <span class="period">/mês (Anual)</span>
+                    </div>
+                    <p class="contract-info" style="background:#DBEAFE; color:#1D4ED8;">Ideal para estruturas maiores</p>
+                    
+                    <ul class="features-list">
+                        <li>Suporte Remoto Ilimitado</li>
+                        <li>Atendimento VIP WhatsApp</li>
+                        <li>Prioridade na Fila de Chamados</li>
+                        <li>Apoio com Softwares de Gestão</li>
+                    </ul>
+
+                    <a href="/contato?plano=SuporteCorporate" class="btn-secondary-lg" style="width: 100%;">Contratar Corporate</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- CALCULADORA PERSONALIZADA -->
+    <!-- ========================= -->
+    <section id="personalizado" class="custom-plan">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-badge">Orçamento Flexível</span>
+                <h2>Não se encaixou nos pacotes?</h2>
+                <p>Monte um plano <span class="gradient-text">Personalizado</span> sob medida usando o simulador abaixo.</p>
+            </div>
+
+            <div class="calculator-wrapper">
+                
+                <!-- Formulário com Slider (Esquerda) -->
+                <div class="calc-form">
                     <div class="calc-group">
                         <label>Quantos computadores sua empresa tem?</label>
-                        <div style="display: flex; gap: 15px; align-items: center;">
-                            <input type="range" id="rangeDevices" min="1" max="50" value="1" oninput="atualizarInput(this.value)" style="flex:1;">
-                            <input type="number" id="numDevices" value="1" min="1" max="100" oninput="atualizarRange(this.value)" style="width: 80px; text-align: center; font-weight: bold;">
+                        <div style="display: flex; gap: 20px; align-items: center; margin-top: 25px;">
+                            <input type="range" id="rangeDevices" min="1" max="50" value="1" oninput="atualizarInput(this.value)">
+                            <input type="number" id="numDevices" value="1" min="1" max="100" oninput="atualizarRange(this.value)">
                         </div>
-                        <small style="color: #666; display: block; margin-top: 10px;">
-                            Base: R$ 120,00 (1º PC) + R$ 60,00 por adicional.
+                        <small style="color: var(--gray-500); display: block; margin-top: 25px; font-size: 0.9rem;">
+                            <strong>Regra de Precificação:</strong> Base R$ 120,00 (1º Computador) + R$ 60,00 por máquina adicional.
                         </small>
                     </div>
-
                 </div>
 
-                <div class="calc-result" style="width: 100%; max-width: 400px;">
+                <!-- Resultado Sticky (Direita) -->
+                <div class="calc-result">
                     <h3>Valor Personalizado</h3>
                     <div class="total-price">
-                        <small>Mensalidade:</small>
-                        R$ <span id="totalCustom">120,00</span>
+                        <small>Mensalidade Estimada</small>
+                        <span style="font-size: 1.5rem; vertical-align: super;">R$</span> <span id="totalCustom">120,00</span>
                     </div>
                     
                     <ul class="summary-list">
-                        <li id="resumoQtd">1 Computador</li>
-                        <li>Suporte Remoto Ilimitado</li>
+                        <li>Cobertura para: <span id="resumoQtd">1 Computador</span></li>
+                        <li>Serviço Incluso: <span>Suporte Remoto Ilimitado</span></li>
+                        <li>Atendimento: <span>Via WhatsApp / Acesso Remoto</span></li>
                     </ul>
 
-                    <a href="pageContato.html?plano=SuportePersonalizado" class="btn-cta">Solicitar Proposta</a>
+                    <a href="/contato?plano=SuportePersonalizado" class="btn-primary-lg" style="width: 100%; background: white; color: var(--primary);">Solicitar Proposta</a>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <footer>
-        <img src="../img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
-        <p>Conectando o presente ao futuro da tecnologia.</p>
-        <br>
-        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
-    </footer>
+    <!-- ===================================================== -->
+      <!-- FOOTER -->
+      <!-- ===================================================== -->
+      <footer class="footer-modern">
+         <div class="container">
+            <div class="footer-grid">
+               <div>
+                  <img src="../img/logo-corenexa.png"
+                     class="footer-logo"
+                     alt="CoreNexa">
+                  <p>
+                     Infraestrutura Gerenciada para Sistemas Empresariais.
+                  </p>
+                  <p>
+                     Mais desempenho.
+                     Mais segurança.
+                     Mais tranquilidade.
+                  </p>
+               </div>
+               <div>
+                  <h4>
+                     Soluções
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../corecloud">
+                        Hospedagem em Nuvem
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../corebackup">
+                        Backup
+                        </a>
+                     </li>
+                     <li>
+                        <a href="/suporte">
+                        Suporte Técnico
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../gestao360">
+                        Gestão de TI
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Empresa
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../sobre">
+                        Sobre
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://www.instagram.com/corenexasolucoes/" target="_blank">
+                        Instagram
+                        </a>
+                     </li>
+					 <li>
+                        <a href="https://www.linkedin.com/in/corenexa-solu%C3%A7%C3%B5es-1115a541a/" target="_blank">
+                        Linkedin
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Contato
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="mailto:contatocorenexa@gmail.com" target="_blank">
+						contatocorenexa@gmail.com
+                     </li>
+                     <li>
+						<a href="https://wa.me/5531984782011" target="_blank">
+                        WhatsApp
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="footer-bottom">
+               © 2026 CoreNexa.
+               Todos os direitos reservados.
+            </div>
+         </div>
+      </footer>
 
-    <script src="../script.js"></script>
-
+    <!-- LÓGICA DO SLIDER PERSONALIZADO -->
+    <script src="/script.js"></script>
     <script>
         // Sincroniza o Slider com o Input de Número
         function atualizarInput(val) {
@@ -199,9 +463,7 @@
                 document.getElementById('numDevices').value = 1;
             }
 
-            // LÓGICA DO PREÇO:
-            // 1º Computador = 120
-            // Restante = 60 cada
+            // LÓGICA DO PREÇO: 1º Computador = 120 / Restante = 60 cada
             let total = 0;
 
             if (qtd === 1) {

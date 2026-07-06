@@ -1,125 +1,337 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../img/ico.png" />
+    <link rel="icon" type="image/x-icon" href="../img/ico-white.png" />
     <title>Sobre Nós - CoreNexa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW">
-	</script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GBYZSDWBYW');
+    </script>
 
-	  gtag('config', 'G-GBYZSDWBYW');
-	</script>
+    <!-- Estilos específicos para a página Sobre V2 -->
+    <style>
+        .about-section {
+            padding: 100px 5%;
+            background: white;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        .about-text p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 35px;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box strong {
+            display: block;
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-box span {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .about-image {
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+        .about-image::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        /* Valores (Missão, Visão, Valores) */
+        .values-wrapper {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            padding: 100px 5%;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { margin-top: 30px; }
+        }
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
-            </a>
+    <!-- ========================= -->
+    <!-- TOP BAR -->
+    <!-- ========================= -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-content">
+                <span>🟢 Atendimento remoto em todo o Brasil</span>
+                <span>☁️ Especialistas em Hospedagem de Sistemas Empresariais</span>
+            </div>
         </div>
+    </div>
 
-        <div class="mobile-menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+    <header class="header-modern">
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="../index.html" class="logo">
+                    <img src="../img/logo-corenexa.png" alt="CoreNexa">
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html">Início</a>
+                    <a href="../sobre">Sobre</a>
+                    <a href="../contato" class="btn-header">Falar com Especialista</a>
+                </nav>
+                <div class="mobile-toggle">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
         </div>
-
-        <nav>
-        <ul class="nav-links">
-            <li><a href="../index.html">Início</a></li>
-			
-            <li class="dropdown-item">
-                    <a href="/servicos">Serviços ▾</a>
-                    <ul class="dropdown-menu">
-						<li><a href="/gestao360">Gestão de TI 360º</a></li>
-                        <li><a href="/corebackup">Backup em Nuvem</a></li>
-                        <li><a href="/corecloud">Hospedagem de Sistemas</a></li>
-                        <li><a href="/suporte">Suporte Técnico</a></li>
-                    </ul>
-                </li>
-			
-            <li><a href="/sobre" style="color:var(--azul); font-weight:700;">Sobre</a></li>
-            <li><a href="/contato">Contato</a></li>
-        </ul>
-    </nav>
-
-        <a href="pageContato.html." target="_blank" class="btn-cta">Solicitar Orçamento</a>
     </header>
 
-    <section class="about-hero">
-        <div class="section-header">
-            <h2>Conectando sua empresa ao <span>Futuro</span></h2>
-            <p>Conheça a história e os valores de quem cuida da sua tecnologia.</p>
+    <!-- ========================= -->
+    <!-- HERO SECTION (MINIMAL) -->
+    <!-- ========================= -->
+    <section class="hero-v2" style="padding: 80px 0 40px 0; background: linear-gradient(#fff, #F8FAFC);">
+        <div class="container" style="text-align: center; max-width: 800px;">
+            <div class="hero-badge">Conheça a CoreNexa</div>
+            <h1 style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 20px;">
+                Conectando sua empresa ao <span class="gradient-text">Futuro.</span>
+            </h1>
+            <p class="hero-description" style="margin: 0 auto;">
+                Conheça a história, a equipe e os valores inegociáveis de quem cuida da tecnologia e da segurança da sua empresa todos os dias.
+            </p>
         </div>
     </section>
 
-    <section class="about-content">
-        <div class="about-container">
+    <!-- ========================= -->
+    <!-- QUEM SOMOS -->
+    <!-- ========================= -->
+    <section class="about-section">
+        <div class="about-grid">
             <div class="about-text">
-                <h3>Quem Somos</h3>
-                <p>A <strong>CoreNexa</strong> nasceu da necessidade de simplificar a TI para pequenas e médias empresas. Percebemos que muitos negócios perdiam tempo precioso lidando com problemas de conexão, segurança e hardware, desviando o foco do que realmente importa: o crescimento.</p>
-                <br>
-                <p>Com sede em Belo Horizonte/MG, somos especialistas em transformar infraestruturas caóticas em sistemas organizados, seguros e velozes. Não somos apenas o "suporte técnico"; somos parceiros estratégicos do seu negócio.</p>
+                <h2>Muito além do suporte técnico. Somos seus parceiros estratégicos.</h2>
+                <p>A <strong>CoreNexa</strong> nasceu da necessidade de simplificar a TI para pequenas e médias empresas. Percebemos que muitos negócios perdiam tempo precioso lidando com problemas de conexão, segurança e hardware, desviando o foco do que realmente importa: o crescimento e o faturamento.</p>
+                <p>Com sede em Belo Horizonte/MG e atendimento remoto em todo o Brasil, somos especialistas em transformar infraestruturas caóticas em sistemas organizados, seguros e velozes. Assumimos a responsabilidade pela sua tecnologia para que você tenha paz de espírito.</p>
                 
-                <div class="stats-bar">
-                    <div class="stat-item">
+                <div class="stats-grid">
+                    <div class="stat-box">
                         <strong>+10</strong>
                         <span>Anos de Experiência</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-box">
                         <strong>24/7</strong>
                         <span>Monitoramento</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-box">
                         <strong>100%</strong>
                         <span>Foco no Cliente</span>
                     </div>
                 </div>
             </div>
-
+            
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipe CoreNexa">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipe CoreNexa trabalhando junta em um escritório moderno">
             </div>
         </div>
     </section>
 
-    <section class="values-section">
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-icon">🚀</div>
-                <h3>Missão</h3>
-                <p>Proporcionar estabilidade e segurança tecnológica, permitindo que nossos clientes foquem exclusivamente em seus negócios.</p>
+    <!-- ========================= -->
+    <!-- MISSÃO, VISÃO E VALORES -->
+    <!-- ========================= -->
+    <section class="values-wrapper">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-badge">Nossos Pilares</span>
+                <h2>O que nos <span class="gradient-text">Move</span></h2>
             </div>
 
-            <div class="value-card highlight">
-                <div class="value-icon">👁️</div>
-                <h3>Visão</h3>
-                <p>Ser referência em gestão de infraestrutura de TI em Minas Gerais, reconhecida pela agilidade e atendimento humanizado.</p>
-            </div>
+            <!-- Utilizando o mesmo grid de benefícios do V2 -->
+            <div class="benefits-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                
+                <!-- Missão -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Nossa Missão</h3>
+                    <p>Proporcionar estabilidade, performance e segurança tecnológica de ponta, permitindo que nossos clientes foquem exclusivamente em expandir seus próprios negócios.</p>
+                </div>
 
-            <div class="value-card">
-                <div class="value-icon">🤝</div>
-                <h3>Valores</h3>
-                <p>Transparência total, proatividade na resolução de problemas e compromisso inegociável com a segurança de dados.</p>
+                <!-- Visão (Destaque) -->
+                <div class="benefit-card" style="border: 2px solid var(--primary); box-shadow: var(--shadow-md);">
+                    <div class="benefit-icon" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;">👁️</div>
+                    <h3>Nossa Visão</h3>
+                    <p>Ser a maior referência em gestão de infraestrutura de TI em Minas Gerais, amplamente reconhecida pela nossa agilidade, transparência e atendimento 100% humanizado.</p>
+                </div>
+
+                <!-- Valores -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Nossos Valores</h3>
+                    <p>Agimos com transparência total, operamos com proatividade na resolução de problemas e mantemos um compromisso inegociável com a segurança dos seus dados.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer>
-        <img src="../img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
-        <p>Conectando o presente ao futuro da tecnologia.</p>
-        <br>
-        <p>© 2025 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
-    </footer>
+    <!-- ========================= -->
+    <!-- CTA (CHAMADA FINAL) -->
+    <!-- ========================= -->
+    <section class="cta-modern" style="padding: 80px 0;">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Pronto para transformar sua infraestrutura?</h2>
+                <p>Agende um bate-papo sem compromisso com nossos especialistas e descubra como a CoreNexa pode acelerar a sua empresa.</p>
+                <div class="hero-actions" style="justify-content:center;">
+                    <a href="/contato" class="btn-secondary-lg">Solicitar Diagnóstico Gratuito</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="../script.js"></script>
-</body>
+	  <!-- ===================================================== -->
+      <!-- FOOTER -->
+      <!-- ===================================================== -->
+      <footer class="footer-modern">
+         <div class="container">
+            <div class="footer-grid">
+               <div>
+                  <img src="../img/logo-corenexa.png"
+                     class="footer-logo"
+                     alt="CoreNexa">
+                  <p>
+                     Infraestrutura Gerenciada para Sistemas Empresariais.
+                  </p>
+                  <p>
+                     Mais desempenho.
+                     Mais segurança.
+                     Mais tranquilidade.
+                  </p>
+               </div>
+               <div>
+                  <h4>
+                     Soluções
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../corecloud">
+                        Hospedagem em Nuvem
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../corebackup">
+                        Backup
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../suporte">
+                        Suporte Técnico
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../gestao360">
+                        Gestão de TI
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Empresa
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../sobre">
+                        Sobre
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://www.instagram.com/corenexasolucoes/" target="_blank">
+                        Instagram
+                        </a>
+                     </li>
+					 <li>
+                        <a href="https://www.linkedin.com/in/corenexa-solu%C3%A7%C3%B5es-1115a541a/" target="_blank">
+                        Linkedin
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Contato
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="mailto:contatocorenexa@gmail.com" target="_blank">
+						contatocorenexa@gmail.com
+                     </li>
+                     <li>
+						<a href="https://wa.me/5531984782011" target="_blank">
+                        WhatsApp
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="footer-bottom">
+               © 2026 CoreNexa.
+               Todos os direitos reservados.
+            </div>
+         </div>
+      </footer>
+      <script src="../script.js"></script>
+   </body>
 </html>

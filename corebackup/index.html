@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../img/ico.png" />
+    <link rel="icon" type="image/x-icon" href="../img/ico-white.png" />
     <title>CoreBackup - Proteção de Dados e Anti-Ransomware</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-
+    
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBYZSDWBYW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,185 +16,533 @@
       gtag('js', new Date());
       gtag('config', 'G-GBYZSDWBYW');
     </script>
+
+    <!-- Estilos específicos para Tabela de Preços e Slider no padrão V2 -->
+    <style>
+        .pricing-section {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+        .plan-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37,99,235,.25);
+        }
+        .plan-card.popular {
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(180deg, white, #F8FAFC);
+        }
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--secondary), #FB923C);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .plan-name {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .price-box {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        .price-box .currency {
+            font-size: 1.2rem;
+            font-weight: 600;
+            vertical-align: top;
+        }
+        .price-box .value {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .price-box .period {
+            font-size: 1rem;
+            color: var(--gray-500);
+        }
+        .plan-limit {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        .features-list li::before {
+            content: '✔';
+            color: var(--primary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .features-list li.included {
+            font-weight: 600;
+            color: var(--dark);
+            background: #EFF6FF;
+            padding: 8px 12px;
+            border-radius: var(--radius-xs);
+            border-bottom: none;
+            margin-bottom: 5px;
+        }
+        .features-list li.included::before {
+            content: '+';
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Estilo do Slider */
+        .storage-slider-container {
+            background: white;
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            margin: 0 auto;
+        }
+        .slider-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        input[type=range] {
+            flex: 1;
+            height: 10px;
+            border-radius: 5px;
+            background: var(--gray-200);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: var(--secondary);
+        }
+        .gb-display {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            min-width: 160px;
+            text-align: center;
+            background: var(--gray-50);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+        }
+        .custom-cta-box {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--gray-300);
+        }
+        
+        @media (max-width: 768px) {
+            .slider-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../img/logo-corenexa.png" alt="CoreNexa Soluções em TI">
-            </a>
+    <!-- ========================= -->
+    <!-- TOP BAR -->
+    <!-- ========================= -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-content">
+                <span>🟢 Atendimento remoto em todo o Brasil</span>
+                <span>☁️ Especialistas em Hospedagem de Sistemas Empresariais</span>
+            </div>
         </div>
-        
-        <div class="mobile-menu-icon">
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-        </div>
+    </div>
 
-        <nav>
-            <ul class="nav-links">
-                <li><a href="../index.html">Início</a></li>
-                <li class="dropdown-item">
-                    <a href="../servicos" class="dropdown-link" style="color:var(--azul); font-weight:700;">Serviços ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/gestao360">Gestão de TI 360º</a></li>
-                        <li><a href="/corebackup" style="color:var(--azul); font-weight:700;">Backup em Nuvem</a></li>
-                        <li><a href="/corecloud">Hospedagem de Sistemas</a></li>
-                        <li><a href="/suporte">Suporte Técnico</a></li>
-                    </ul>
-                </li>
-                <li><a href="../sobre">Sobre</a></li>
-                <li><a href="../contato">Contato</a></li>
-            </ul>
-        </nav>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+    <header class="header-modern">
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="../index.html" class="logo">
+                    <img src="../img/logo-corenexa.png" alt="CoreNexa">
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html">Início</a>
+                    <a href="../sobre">Sobre</a>
+                    <a href="../contato" class="btn-header">Falar com Especialista</a>
+                </nav>
+                <div class="mobile-toggle">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <section class="dp-hero">
-        <div class="dp-hero-content">
-            <span class="badge-security">🔒 O Cofre Digital da sua Empresa</span>
-            <h1>Conheça o <span style="color: var(--laranja);">CoreBackup</span></h1>
-            <p>Esqueça os HDs externos manuais. Proteja seu negócio contra falhas, exclusões acidentais e ataques de Ransomware com nossa solução automatizada em nuvem e local.</p>
-            <div class="dp-buttons">
-                <a href="#planos" class="btn-cta">Ver Planos e Preços</a>
-                <a href="https://wa.me/5531984782011" class="btn-outline-light">Falar com Especialista</a>
+    <!-- ========================= -->
+    <!-- HERO SECTION -->
+    <!-- ========================= -->
+    <section class="hero-v2">
+        <div class="hero-bg-glow hero-glow-1"></div>
+        <div class="hero-bg-glow hero-glow-2"></div>
+        <div class="container">
+            <div class="hero-grid">
+                
+                <!-- CONTEÚDO -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        🔒 O Cofre Digital da sua Empresa
+                    </div>
+                    <h1>
+                        O porto seguro do seu <span class="gradient-text">Servidor Físico.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Esqueça os HDs externos manuais. Proteja seu negócio contra falhas, exclusões acidentais e ataques de Ransomware com nossa solução automatizada em nuvem e local. <strong>100% automático e silencioso.</strong>
+                    </p>
+                    
+                    <div class="hero-benefits">
+                        <div class="benefit">✔ Backup Automático</div>
+                        <div class="benefit">✔ Criptografia Militar</div>
+                        <div class="benefit">✔ Relatórios Diários</div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#planos" class="btn-primary-lg">Ver Planos e Preços</a>
+                        <a href="https://wa.me/5531984782011" class="btn-secondary-lg">Falar com Especialista</a>
+                    </div>
+                </div>
+
+                <!-- VISUAL DASHBOARD -->
+                <div class="hero-visual">
+                    <div class="cloud-dashboard">
+                        <div class="dashboard-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="dashboard-body">
+                            <div class="server-card">
+                                <div class="server-icon">🛡️</div>
+                                <div>
+                                    <strong>CoreBackup</strong>
+                                    <small>Proteção Ativa</small>
+                                </div>
+                            </div>
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span>Rotina Diária</span>
+                                    <strong>100% Concluída</strong>
+                                </div>
+                                <div class="status-item">
+                                    <span>Criptografia</span>
+                                    <strong>AES-256</strong>
+                                </div>
+                                <div class="status-item">
+                                    <span>Anti-Ransomware</span>
+                                    <strong>Ativado</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card floating-card-left">
+                        💾 Cópia Híbrida
+                    </div>
+                    <div class="floating-card floating-card-right">
+                        📊 Relatórios Ativos
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="software-features">
+    <!-- ========================= -->
+    <!-- FEATURES / RECURSOS -->
+    <!-- ========================= -->
+    <section class="business-benefits">
         <div class="container">
-            <div class="section-header">
-                <h2>Por que sua empresa precisa do <span>CoreBackup?</span></h2>
+            <div class="section-title">
+                <span class="section-badge">Recursos Exclusivos</span>
+                <h2>Por que sua empresa precisa do <span class="gradient-text">CoreBackup?</span></h2>
                 <p>Muito mais que um "Google Drive". Um software corporativo feito para garantir a continuidade do seu negócio.</p>
             </div>
-
-            <div class="sf-grid">
-                <div class="sf-card">
-                    <div class="sf-icon">⚙️</div>
+            
+            <div class="benefits-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚙️</div>
                     <h3>100% Automatizado</h3>
                     <p>Você define os horários e o software faz o resto silenciosamente. Ninguém precisa lembrar de "salvar os arquivos".</p>
                 </div>
-                <div class="sf-card">
-                    <div class="sf-icon">🏛️</div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏛️</div>
                     <h3>Sistemas do Governo</h3>
-                    <p>Fazemos backup a quente de Bancos de Dados (SQL) e pastas de programas como <strong>Receita Federal, SEFIP, eSocial e conectividade social</strong>.</p>
+                    <p>Fazemos backup a quente de Bancos de Dados (SQL) e pastas de programas como Receita Federal, SEFIP e eSocial.</p>
                 </div>
-                <div class="sf-card">
-                    <div class="sf-icon">💽</div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💽</div>
                     <h3>Cópia Local (Híbrida)</h3>
-                    <p>Acesse seus arquivos rápido, mesmo sem internet. Salve uma cópia no seu HD Externo ou Servidor Local simultaneamente com a nuvem.</p>
+                    <p>Acesse seus arquivos rápido, mesmo sem internet. Salve uma cópia no seu HD Externo simultaneamente com a nuvem.</p>
                 </div>
-                <div class="sf-card">
-                    <div class="sf-icon">🔐</div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔐</div>
                     <h3>Criptografia Militar</h3>
-                    <p>Seus dados são criptografados (AES-256) antes mesmo de saírem do seu servidor. Só você tem a chave de acesso aos dados.</p>
+                    <p>Seus dados são criptografados (AES-256) antes mesmo de saírem do seu servidor. Só você tem a chave de acesso.</p>
                 </div>
-                <div class="sf-card">
-                    <div class="sf-icon">🛡️</div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
                     <h3>Anti-Ransomware</h3>
-                    <p>Nossa nuvem bloqueia alterações maliciosas. Se um vírus sequestrar seu computador, recuperamos seus dados intactos em minutos.</p>
+                    <p>Nossa nuvem bloqueia alterações maliciosas. Recuperamos seus dados intactos em minutos se ocorrer um ataque.</p>
                 </div>
-                <div class="sf-card">
-                    <div class="sf-icon">📊</div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
                     <h3>Relatórios Diários</h3>
-                    <p>Receba por e-mail a confirmação de que seus arquivos vitais, sistemas médicos e documentos jurídicos foram salvos com sucesso.</p>
+                    <p>Receba por e-mail a confirmação de que seus arquivos vitais e sistemas médicos foram salvos com sucesso.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="planos" class="pricing-section" style="background-color: #f8fafc;">
-        <div class="section-header">
-            <h2>Planos <span>All-in-One</span></h2>
-            <p>Licença do Software CoreBackup + Espaço na Nuvem já inclusos no pacote.</p>
+    <!-- ========================= -->
+    <!-- PREÇOS E PLANOS -->
+    <!-- ========================= -->
+    <section id="planos" class="pricing-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-badge">Planos All-in-One</span>
+                <h2>Invista na <span class="gradient-text">segurança dos seus dados</span></h2>
+                <p>Licença do Software CoreBackup + Espaço na Nuvem já inclusos no pacote.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Plano Entry -->
+                <div class="plan-card">
+                    <h3 class="plan-name">Entry 100GB</h3>
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">79,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <p class="plan-limit">100 GB em Nuvem</p>
+                    <ul class="features-list">
+                        <li>Ideal para Documentos e XMLs</li>
+                        <li>Backup Automático Diário</li>
+                        <li>Retenção de 30 dias</li>
+                    </ul>
+                    <a href="/contato?assunto=CoreBackup100GB" class="btn-secondary-lg" style="width: 100%;">Contratar Agora</a>
+                </div>
+
+                <!-- Plano Business (Destaque) -->
+                <div class="plan-card popular">
+                    <div class="popular-tag">Mais Vendido</div>
+                    <h3 class="plan-name">Business 500GB</h3>
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">299,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <p class="plan-limit">500 GB em Nuvem</p>
+                    <ul class="features-list">
+                        <li class="included">Ideal para Servidores e Clínicas</li>
+                        <li>Proteção contra Ransomware</li>
+                        <li>Backup de Bancos SQL</li>
+                        <li>Suporte Prioritário</li>
+                    </ul>
+                    <a href="/contato?assunto=CoreBackup500GB" class="btn-primary-lg" style="width: 100%;">Contratar Agora</a>
+                </div>
+
+                <!-- Plano Enterprise -->
+                <div class="plan-card">
+                    <h3 class="plan-name">Enterprise 1TB</h3>
+                    <div class="price-box">
+                        <span class="currency">R$</span>
+                        <span class="value">499,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <p class="plan-limit">1 TB (1000 GB) em Nuvem</p>
+                    <ul class="features-list">
+                        <li class="included">Para grandes volumes</li>
+                        <li>Ambientes Híbridos</li>
+                        <li>Backup de Imagem de Sistema</li>
+                        <li>Relatórios Gerenciais</li>
+                    </ul>
+                    <a href="/contato?assunto=CoreBackup1TB" class="btn-secondary-lg" style="width: 100%;">Contratar Agora</a>
+                </div>
+            </div>
+
+            <!-- Slider Interativo -->
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="storage-slider-container">
+                    <div class="section-title" style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Precisa de um tamanho específico?</h3>
+                        <p style="font-size: 1rem;">Arraste para simular o armazenamento necessário para o seu servidor.</p>
+                    </div>
+                    
+                    <div class="slider-wrapper">
+                        <input type="range" id="storageRange" min="100" max="5000" step="50" value="1500" oninput="updateStorage(this.value)">
+                        <div class="gb-display" id="storageDisplay">1.5 TB</div>
+                    </div>
+
+                    <div class="custom-cta-box">
+                        <a id="btnCustomStorage" href="/contato?assunto=CoreBackupPersonalizado&gb=1500GB" class="btn-primary-lg">
+                            Solicitar Orçamento para <span id="btnTextStorage" style="margin-left: 5px;">1.5 TB</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <div class="pricing-grid">
-            <div class="plan-card" style="background: white;">
-                <h3 class="plan-name">Entry 100GB</h3>
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">79,90</span>
-                    <span class="period">/mês</span>
-                </div>
-                <p class="plan-limit">100 GB em Nuvem</p>
-                <ul class="features-list">
-                    <li>Ideal para Documentos e XMLs</li>
-                    <li>Backup Automático Diário</li>
-                    <li>Retenção de 30 dias</li>
-                </ul>
-                <a href="/contato?assunto=CoreBackup100GB" class="btn-plan btn-outline">Contratar Agora</a>
+    <!-- ===================================================== -->
+      <!-- FOOTER -->
+      <!-- ===================================================== -->
+      <footer class="footer-modern">
+         <div class="container">
+            <div class="footer-grid">
+               <div>
+                  <img src="../img/logo-corenexa.png"
+                     class="footer-logo"
+                     alt="CoreNexa">
+                  <p>
+                     Infraestrutura Gerenciada para Sistemas Empresariais.
+                  </p>
+                  <p>
+                     Mais desempenho.
+                     Mais segurança.
+                     Mais tranquilidade.
+                  </p>
+               </div>
+               <div>
+                  <h4>
+                     Soluções
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../corecloud">
+                        Hospedagem em Nuvem
+                        </a>
+                     </li>
+                     <li>
+                        <a href="/corebackup">
+                        Backup
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../suporte">
+                        Suporte Técnico
+                        </a>
+                     </li>
+                     <li>
+                        <a href="../gestao360">
+                        Gestão de TI
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Empresa
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="../sobre">
+                        Sobre
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://www.instagram.com/corenexasolucoes/" target="_blank">
+                        Instagram
+                        </a>
+                     </li>
+					 <li>
+                        <a href="https://www.linkedin.com/in/corenexa-solu%C3%A7%C3%B5es-1115a541a/" target="_blank">
+                        Linkedin
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h4>
+                     Contato
+                  </h4>
+                  <ul>
+                     <li>
+                        <a href="mailto:contatocorenexa@gmail.com" target="_blank">
+						contatocorenexa@gmail.com
+                     </li>
+                     <li>
+						<a href="https://wa.me/5531984782011" target="_blank">
+                        WhatsApp
+                     </li>
+                  </ul>
+               </div>
             </div>
-
-            <div class="plan-card popular">
-                <div class="popular-tag">Mais Vendido</div>
-                <h3 class="plan-name">Business 500GB</h3>
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">299,90</span>
-                    <span class="period">/mês</span>
-                </div>
-                <p class="plan-limit">500 GB em Nuvem</p>
-                <ul class="features-list">
-                    <li class="included">Ideal para Servidores e Clínicas</li>
-                    <li>Proteção contra Ransomware</li>
-                    <li>Backup de Bancos SQL</li>
-                    <li>Suporte Prioritário</li>
-                </ul>
-                <a href="/contato?assunto=CoreBackup500GB" class="btn-plan btn-filled">Contratar Agora</a>
-            </div>
-
-            <div class="plan-card" style="background: white;">
-                <h3 class="plan-name">Enterprise 1TB</h3>
-                <div class="price-box">
-                    <span class="currency">R$</span>
-                    <span class="value">499,90</span>
-                    <span class="period">/mês</span>
-                </div>
-                <p class="plan-limit">1 TB (1000 GB) em Nuvem</p>
-                <ul class="features-list">
-                    <li class="included">Para grandes volumes</li>
-                    <li>Ambientes Híbridos</li>
-                    <li>Backup de Imagem de Sistema</li>
-                    <li>Relatórios Gerenciais</li>
-                </ul>
-                <a href="/contato?assunto=CoreBackup1TB" class="btn-plan btn-outline">Contratar Agora</a>
-            </div>
-        </div>
-
-        <div class="container" style="max-width: 800px;">
-            <div class="storage-slider-container">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h3 style="color: var(--azul);">Precisa de um tamanho específico?</h3>
-                    <p style="color: #666; font-size: 14px;">Arraste para simular o armazenamento necessário para o seu servidor.</p>
-                </div>
-                
-                <div class="slider-wrapper">
-                    <input type="range" id="storageRange" min="100" max="5000" step="50" value="1500" oninput="updateStorage(this.value)">
-                    <div class="gb-display" id="storageDisplay">1.5 TB</div>
-                </div>
-
-                <div class="custom-cta-box">
-                    <a id="btnCustomStorage" href="/contato?assunto=CoreBackupPersonalizado&gb=1500GB" class="btn-cta">
-                        Solicitar Orçamento para <span id="btnTextStorage">1.5 TB</span>
+            
+            <!-- Link de Revenda B2B -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="font-size: 0.9rem; color: var(--gray-400);">
+                    Você é prestador de serviços de TI? 
+                    <a href="../parceiros" style="color: var(--secondary); font-weight: 700; transition: var(--transition);">
+                        Conheça nosso Programa de Revenda White Label.
                     </a>
-                </div>
+                </p>
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <img src="../img/logo-corenexa.png" alt="CoreNexa" class="footer-logo-img">
-        <p>Conectando o presente ao futuro da tecnologia.</p>
-        <br>
-        <p>© 2026 CORENEXA Soluções em TI. Todos os direitos reservados.</p>
-        
-        <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            <p style="font-size: 12px; color: #888;">
-                Você é prestador de serviços de TI? 
-                <a href="../parceiros" style="color: var(--laranja); text-decoration: none; font-weight: bold;">
-                    Conheça nosso Programa de Revenda White Label.
-                </a>
-            </p>
+            <div class="footer-bottom" style="margin-top: 30px;">
+                © 2026 CoreNexa. Todos os direitos reservados.
+            </div>
         </div>
     </footer>
 
